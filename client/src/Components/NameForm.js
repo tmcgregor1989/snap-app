@@ -15,45 +15,45 @@ import {postHighScore} from "../HighScoreService"
 // }
 
 
-const NameForm = ({postHighScore}) =>{
+const NameForm1 = ({postHighScore}) =>{
     const [player1name, setPlayer1Name] = useState("");
-    const [player2name, setPlayer2Name] = useState("");
+    // const [player2name, setPlayer2Name] = useState("");
 
-    // const handlePlayer1NameChange = (event) => setPlayer1Name(event.target.value);
+    const handlePlayer1NameChange = (event) => setPlayer1Name(event.target.value);
     // const handlePlayer2NameChange = (event) => setPlayer2Name(event.target.value);
 
 
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        addPlayers({
-            Player1: player1name,
-            Player1Score: 0,
-            Player2: player2name,
-            Player2Score: 0
+        postHighScore({
+            name: player1name,
+            score: 0,
+            // Player2: player2name,
+            // Player2Score: 0
         });
         setPlayer1Name("");
-        setPlayer2Name("")
+        // setPlayer2Name("")
     }
 
-    const onChange = (event) => {
-        formData[event.target.id] = event.target.value;
-        setFormData(formData);
-    }
+    // const onChange = (event) => {
+    //     formData[event.target.id] = event.target.value;
+    //     setFormData(formData);
+    // }
 
     return (
         <form className="" onSubmit={handleSubmit} method="post">
             <label htmlFor="player1name">Player 1 Name:</label>
-            <input  onChange={onChange}type="text" id="player1name" v-model="player1name" required/>
+            <input type="text" id="player1name" required/>
 
 
-            <input type="submit" value="Start Game" id="Start"/>
+            <input type="submit" value="Player 1 ready" id="Start"/>
 
         </form>
 
-{/* <label htmlFor="player2name">Player 2 Name:</label>
-<input  onChange={onChange}type="text" id="player2name"  required/> */}
+/* <label htmlFor="player2name">Player 2 Name:</label>
+<input  onChange={onChange}type="text" id="player2name"  required/> */
 
     )
 }
-export default NameForm;
+export default NameForm1;

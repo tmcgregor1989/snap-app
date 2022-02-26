@@ -3,6 +3,7 @@ import Player1Hand from "../Components/Player1Hand";
 import Player2Hand from "../Components/Player2Hand";
 import SnapPool from "../Components/SnapPool";
 import { postHighScore as dbpostHighScore } from "../HighScoreService";
+import NameForm1 from "../Components/NameForm";
 
 
 const SnapContainer = () => {
@@ -41,7 +42,7 @@ const SnapContainer = () => {
 
     return(
         <div id="container">
-            <NameForm postHighScore={postHighScore}/>
+            <NameForm1 postHighScore={postHighScore}/>
             <button onClick={dealPool} pool={pool}>Deal</button>
             <Player1Hand hand1={hand1}/>
             <Player2Hand hand2={hand2}/>
