@@ -27,8 +27,8 @@ const SnapContainer = () => {
         // hand1.splice(0, 26)
         // hand2.splice(26, 26)
         // pool = []
-        setHand1(pool)
-        setHand2(pool)
+        let hand1 = pool
+        setHand1(hand1)
     }
 
     return(
