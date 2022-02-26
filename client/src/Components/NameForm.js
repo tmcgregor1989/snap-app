@@ -2,7 +2,6 @@
 // START GAME button that pushes those names
 
 import {useState} from "react";
-import {postHighScore} from "../HighScoreService"
 
 // BELOW IS THE POSTPLAYERS FUNCTION:
 // export const postPlayers = (payload) => {
@@ -32,19 +31,17 @@ const NameForm1 = ({postHighScore}) =>{
             // Player2: player2name,
             // Player2Score: 0
         });
-        setPlayer1Name("");
+        // setPlayer1Name("");
         // setPlayer2Name("")
     }
 
-    // const onChange = (event) => {
-    //     formData[event.target.id] = event.target.value;
-    //     setFormData(formData);
-    // }
+        
+    
 
     return (
         <form className="" onSubmit={handleSubmit} method="post">
             <label htmlFor="player1name">Player 1 Name:</label>
-            <input type="text" id="player1name" required/>
+            <input onChange={handlePlayer1NameChange}type="text" id="player1name" required/>
 
 
             <input type="submit" value="Player 1 ready" id="Start"/>
