@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import Player1Hand from "../Components/Player1Hand";
 import Player2Hand from "../Components/Player2Hand";
 import SnapPool from "../Components/SnapPool";
+import { postHighScore as dbpostHighScore } from "../HighScoreService";
 
 
 const SnapContainer = () => {
@@ -9,6 +10,7 @@ const SnapContainer = () => {
     const [pool, setPool] = useState([])
     const [hand1, setHand1] = useState([])
     const [hand2, setHand2] = useState([])
+    const [highScores, setHighScores] = useState([])
 
     useEffect(() => {
         getPool();
@@ -31,8 +33,15 @@ const SnapContainer = () => {
         setHand2(pool)
     }
 
+    const postHighScore = newHighScore => {
+        dbpostHighScore(newHighScore)
+          .then(savedHighScore => setHighScores([ ...highScores, savedHighScore ]));
+      };
+    
+
     return(
         <div id="container">
+            <NameForm postHighScore={postHighScore}/>
             <button onClick={dealPool} pool={pool}>Deal</button>
             <Player1Hand hand1={hand1}/>
             <Player2Hand hand2={hand2}/>
