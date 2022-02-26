@@ -16,13 +16,18 @@ const SnapContainer = () => {
     const [hand2, setHand2] = useState([])
     const [highScores, setHighScores] = useState([])
 
+    // document.addEventListener('keydown', logKey);
+
     useEffect(() => {
         getPool();
     }, [])
 
+
+
     useEffect(() => {
         getHighScores();
     }, [])
+
 
     const getPool = function(){
         fetch('https://deckofcardsapi.com/api/deck/new/draw/?count=52')
@@ -30,15 +35,29 @@ const SnapContainer = () => {
         .then(data => setPool(data.cards))
     }
 
-    const dealPool = function(pool){
+    const dealPool = function(){
+        let newPool = []
+        let newHand1 = pool.slice(0, 26)
+        let newHand2 = pool.slice(26, 52)
+        setPool(newPool)
+        setHand1(newHand1)
+        setHand2(newHand2)
+    }
 
-        // hand1 = Array.from(new Set(pool))
-        // hand2 = Array.from(new Set(pool))
-        // hand1.splice(0, 26)
-        // hand2.splice(26, 26)
-        // pool = []
-        setHand1(pool)
-        setHand2(pool)
+    // function logKey(a) {
+    //     hand1.shift()
+    //     setHand1(hand1)
+    //     console.log(hand1)
+
+    // }
+
+    const playCard1 = function(){
+    if (hand1.length > 0){
+        let card = hand1.pop()
+        let newPool = [...pool, card]
+        setHand1(hand1)
+        setPool(newPool)
+        }
     }
 
 
@@ -68,14 +87,19 @@ const SnapContainer = () => {
 
     return(
         <div id="container">
+
+            <button onClick={dealPool}>Deal</button>
+            <button onClick={playCard1}>Play card 1</button>
+
             <NameForm1 postHighScore={postHighScore}/>
-            <button onClick={dealPool} pool={pool}>Deal</button>
+        
+
             <Player1Hand hand1={hand1}/>
             <Player2Hand hand2={hand2}/>
             <SnapPool pool={pool}/>
             <HighScoreList highScores={highScores} deleteHighScore={deleteHighScore}/>
         </div>
-    )
+        )
 
 }
 
