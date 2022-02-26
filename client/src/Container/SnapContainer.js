@@ -40,12 +40,12 @@ const SnapContainer = () => {
     // }
 
     const playCard1 = function(){
-        let card = hand1.shift()
+    if (hand1.length > 0){
+        let card = hand1.pop()
         let newPool = [...pool, card]
         setHand1(hand1)
         setPool(newPool)
-        console.log(hand1)
-        console.log(pool)
+        }
     }
 
     return(
