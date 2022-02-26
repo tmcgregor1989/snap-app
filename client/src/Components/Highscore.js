@@ -1,13 +1,14 @@
 import React from 'react';
 import ListItem from './ListItem';
 
-const HighScoreList = ({players, deletePlayer}) => {
-    const highScoreListItem = players.map((player) => {
-        return <ListItem player={player} key={player._id} deletePlayer={deletePlayer}/>
+const HighScoreList = ({highScores, deleteHighScore}) => {
+    const highScoreListItem = highScores.map((highScore) => {
+        return <ListItem highScore={highScore} key={highScore._id} deleteHighScore={deleteHighScore}/>
     })
 
     return (
         <div className='highScoreBoard'>
+            <h3>High Scores</h3>
         <ul>
             {highScoreListItem}
         </ul>
