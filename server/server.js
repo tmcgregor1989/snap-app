@@ -9,7 +9,7 @@ app.use(cors())
 
 MongoClient.connect('mongodb://0.0.0.0:27017', {useUnifiedTopology : true})
 .then((client) => {
-  const db = client.db('hotel')
+  const db = client.db('scoreboard')
   const playersCollection = db.collection('players')
   const playersRouter = createRouter(playersCollection)
   app.use('/api/players', playersRouter)
