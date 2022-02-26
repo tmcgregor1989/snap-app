@@ -1,4 +1,5 @@
 import React from 'react';
+import ListItem from './ListItem';
 
 const HighScoreList = ({players, deletePlayer}) => {
     const highScoreListItem = players.map((player) => {
@@ -19,3 +20,6 @@ const HighScoreList = ({players, deletePlayer}) => {
 // array of players[name, score]
 
 // arranged in order of score
+
+
+export default HighScoreList;

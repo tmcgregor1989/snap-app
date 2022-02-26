@@ -12,4 +12,4 @@ const ListItem = ({player, deletePlayer}) => {
     )
 }
 
-default export ListItem;
+export default ListItem;
