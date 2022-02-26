@@ -17,10 +17,17 @@ import {postPlayers} from "./GamesService";
 
 
 const NameForm = ({addPlayers}) =>{
-    const [formData, setFormData] = useState({});
+    const [player1name, setPlayer1Name] = useState("");
+    const [player2name, setPlayer2Name] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handlePlayer1NameChange = (event) => setPlayer1Name(event.target.value);
+    const handlePlayer2NameChange = (event) => setPlayer2Name(event.target.value);
+
+    
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
         formData["player1name"] = formData.player1name;
         formData["player2name"] = formData.player2name;
         postPlayers(formData).then((data) => {
