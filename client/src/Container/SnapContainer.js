@@ -1,23 +1,45 @@
 import React, {useState, useEffect} from "react";
+import Player1Hand from "../Components/Player1Hand";
+import Player2Hand from "../Components/Player2Hand";
+import SnapPool from "../Components/SnapPool";
 
 
-const DeckContainer = () => {
+const SnapContainer = () => {
 
-    const [deck, setDeck] = useState([])
+    const [pool, setPool] = useState([])
+    const [hand1, setHand1] = useState([])
+    const [hand2, setHand2] = useState([])
 
     useEffect(() => {
-        getDeck();
+        getPool();
     }, [])
 
-    const getDeck = function(){
+    const getPool = function(){
         fetch('https://deckofcardsapi.com/api/deck/new/draw/?count=52')
         .then(res => res.json())
-        .then(data => setDeck(data.cards))
+        .then(data => setPool(data.cards))
     }
 
-    return
+    const dealPool = function(pool){
+
+        // hand1 = Array.from(new Set(pool))
+        // hand2 = Array.from(new Set(pool))
+        // hand1.splice(0, 26)
+        // hand2.splice(26, 26)
+        // pool = []
+        setHand1(pool)
+        setHand2(pool)
+    }
+
+    return(
         <div id="container">
+            <button onClick={dealPool} pool={pool}>Deal</button>
+            <Player1Hand hand1={hand1}/>
+            <Player2Hand hand2={hand2}/>
+            <SnapPool pool={pool}/>
         </div>
+    )
+
 }
 
-export default DeckContainer;
+export default SnapContainer;
