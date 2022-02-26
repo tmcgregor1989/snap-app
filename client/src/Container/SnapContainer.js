@@ -10,9 +10,12 @@ const SnapContainer = () => {
     const [hand1, setHand1] = useState([])
     const [hand2, setHand2] = useState([])
 
+    // document.addEventListener('keydown', logKey);
+
     useEffect(() => {
         getPool();
     }, [])
+
 
     const getPool = function(){
         fetch('https://deckofcardsapi.com/api/deck/new/draw/?count=52')
@@ -27,14 +30,28 @@ const SnapContainer = () => {
         setPool(newPool)
         setHand1(newHand1)
         setHand2(newHand2)
-        console.log(newHand1)
-        console.log(newHand2)
     }
 
+    // function logKey(a) {
+    //     hand1.shift()
+    //     setHand1(hand1)
+    //     console.log(hand1)
+
+    // }
+
+    const playCard1 = function(){
+        let card = hand1.shift()
+        let newPool = [...pool, card]
+        setHand1(hand1)
+        setPool(newPool)
+        console.log(hand1)
+        console.log(pool)
+    }
 
     return(
         <div id="container">
             <button onClick={dealPool}>Deal</button>
+            <button onClick={playCard1}>Play card 1</button>
             <Player1Hand hand1={hand1}/>
             <Player2Hand hand2={hand2}/>
             <SnapPool pool={pool}/>
