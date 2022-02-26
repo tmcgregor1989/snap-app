@@ -6,10 +6,10 @@ export const getHighScores = () =>{
 }
 
 
-export const postHighScore = (booking) => {
+export const postHighScore = (highScore) => {
     return fetch(baseURL, {
         method: 'POST',
-        body: JSON.stringify(booking),
+        body: JSON.stringify(highScore),
         headers: { 'Content-Type': 'application/json'}
     })
     .then(res => res.json())
@@ -22,10 +22,10 @@ export const deleteHighScore = (id) =>{
 }
 
 
-export const updateHighScore = (booking) => {
-    return fetch(baseURL + booking._id, {
+export const updateHighScore = (highScore) => {
+    return fetch(baseURL + highScore._id, {
         method: 'PUT',
-        body: JSON.stringify(booking),
+        body: JSON.stringify(highScore),
         headers: { 'Content-Type': 'application/json'}
     })
     .then(res => res.json())
