@@ -20,25 +20,26 @@ const SnapContainer = () => {
         .then(data => setPool(data.cards))
     }
 
-    const dealPool = function(pool){
-
-        // hand1 = Array.from(new Set(pool))
-        // hand2 = Array.from(new Set(pool))
-        // hand1.splice(0, 26)
-        // hand2.splice(26, 26)
-        // pool = []
-        let hand1 = pool
-        setHand1(hand1)
+    const dealPool = function(){
+        let newPool = []
+        let newHand1 = pool.slice(0, 26)
+        let newHand2 = pool.slice(26, 52)
+        setPool(newPool)
+        setHand1(newHand1)
+        setHand2(newHand2)
+        console.log(newHand1)
+        console.log(newHand2)
     }
+
 
     return(
         <div id="container">
-            <button onClick={dealPool} pool={pool}>Deal</button>
+            <button onClick={dealPool}>Deal</button>
             <Player1Hand hand1={hand1}/>
             <Player2Hand hand2={hand2}/>
             <SnapPool pool={pool}/>
         </div>
-    )
+        )
 
 }
 

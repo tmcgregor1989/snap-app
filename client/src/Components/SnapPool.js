@@ -4,9 +4,13 @@
 
 
 import React from "react";
+// import Card from "./Card";
 
 const SnapPool = ({pool}) => {
 
+    // const poolList = pool.map((card, index) => { 
+    //     return <Card card={card} key={index} index={index}/>
+    // });
 
     return(
         <div>
@@ -15,6 +19,6 @@ const SnapPool = ({pool}) => {
             </ul>
         </div>
     )
-}
+};
 
-export default SnapPool
+export default SnapPool;
