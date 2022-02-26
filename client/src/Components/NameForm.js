@@ -16,21 +16,29 @@ import {useState} from "react";
 
 const NameForm1 = ({postHighScore}) =>{
     const [player1name, setPlayer1Name] = useState("");
-    // const [player2name, setPlayer2Name] = useState("");
+    const [player2name, setPlayer2Name] = useState("");
 
     const handlePlayer1NameChange = (event) => setPlayer1Name(event.target.value);
-    // const handlePlayer2NameChange = (event) => setPlayer2Name(event.target.value);
+    const handlePlayer2NameChange = (event) => setPlayer2Name(event.target.value);
 
 
 
-    const handleSubmit = (event) => {
+    const handleSubmit1 = (event) => {
         event.preventDefault();
         postHighScore({
             name: player1name,
             score: 0,
-            // Player2: player2name,
-            // Player2Score: 0
+           
         });
+    }
+
+        const handleSubmit2 = (event) => {
+            event.preventDefault();
+            postHighScore({
+                name: player2name,
+                score: 0,
+              
+            });
         // setPlayer1Name("");
         // setPlayer2Name("")
     }
@@ -39,7 +47,8 @@ const NameForm1 = ({postHighScore}) =>{
     
 
     return (
-        <form className="" onSubmit={handleSubmit} method="post">
+        <div className="form">
+        <form className="" onSubmit={handleSubmit1} method="post">
             <label htmlFor="player1name">Player 1 Name:</label>
             <input onChange={handlePlayer1NameChange}type="text" id="player1name" required/>
 
@@ -48,8 +57,16 @@ const NameForm1 = ({postHighScore}) =>{
 
         </form>
 
-/* <label htmlFor="player2name">Player 2 Name:</label>
-<input  onChange={onChange}type="text" id="player2name"  required/> */
+        <form className="" onSubmit={handleSubmit2} method="post">
+            <label htmlFor="player2name">Player 2 Name:</label>
+            <input onChange={handlePlayer2NameChange}type="text" id="player2name" required/>
+
+
+            <input type="submit" value="Player 2 ready" id="Start"/>
+
+        </form>
+        </div>
+
 
     )
 }
