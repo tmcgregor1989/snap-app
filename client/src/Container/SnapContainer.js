@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from "react";
+import HighScoreList from "../Components/Highscore";
 import Player1Hand from "../Components/Player1Hand";
 import Player2Hand from "../Components/Player2Hand";
 import SnapPool from "../Components/SnapPool";
+import { getHighScores as dbGetHighScores, deleteHighScore as dbDeleteHighScore } from "../HighScoreService";
 
 
 const SnapContainer = () => {
@@ -9,9 +11,14 @@ const SnapContainer = () => {
     const [pool, setPool] = useState([])
     const [hand1, setHand1] = useState([])
     const [hand2, setHand2] = useState([])
+    const [highScores, setHighScores] = useState([])
 
     useEffect(() => {
         getPool();
+    }, [])
+
+    useEffect(() => {
+        getHighScores();
     }, [])
 
     const getPool = function(){
@@ -31,12 +38,32 @@ const SnapContainer = () => {
         setHand2(pool)
     }
 
+    const getHighScores = function(){
+        dbGetHighScores()
+        .then((data) => {
+            console.log(data);
+            setHighScores(data)
+        })
+    }
+
+    const deleteHighScore = (id) => {
+        dbDeleteHighScore(id).then(()=>{
+            let temp = highScores.map(g=>g);
+            const toDel = highScores.map(g =>g._id).indexOf(id);
+            temp.splice(toDel, 1);
+            setHighScores(temp);
+            })
+        }
+
+    
+
     return(
         <div id="container">
             <button onClick={dealPool} pool={pool}>Deal</button>
             <Player1Hand hand1={hand1}/>
             <Player2Hand hand2={hand2}/>
             <SnapPool pool={pool}/>
+            <HighScoreList highScores={highScores} deleteHighScore={deleteHighScore}/>
         </div>
     )
 
