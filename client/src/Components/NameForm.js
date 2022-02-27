@@ -53,7 +53,7 @@ const NameForm1 = ({postHighScore}) =>{
             <input onChange={handlePlayer1NameChange}type="text" id="player1name" required/>
 
 
-            <input type="submit" value="Player 1 ready" id="Start"/>
+            <input type="submit" value="Ready" id="Start"/>
 
         </form>
 
@@ -62,7 +62,7 @@ const NameForm1 = ({postHighScore}) =>{
             <input onChange={handlePlayer2NameChange}type="text" id="player2name" required/>
 
 
-            <input type="submit" value="Player 2 ready" id="Start"/>
+            <input type="submit" value="Ready" id="Start"/>
 
         </form>
         </div>
