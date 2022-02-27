@@ -84,10 +84,29 @@ const SnapContainer = () => {
             })
         }
 
-
+    const [highlight, setHighlight] = useState("2px solid black");
+    function handleKeyPress(e) {
+        var key = e.key;
+        console.log( "You pressed a key: " + key );
+        if (key === "r") {
+            setHighlight("2px solid red");
+            if (hand1.length > 0){
+                let card = hand1.pop()
+                let newPool = [...pool, card]
+                setHand1(hand1)
+                setPool(newPool)
+                }
+        }
+        else if (key === "g") {
+            setHighlight("2px solid green")
+        }
+    }
 
     return(
         <div id="container">
+            <div>
+            <input type="text" onKeyPress={(e) => handleKeyPress(e)} style={{border: highlight}} />
+            </div>
             <button
             onMouseEnter={() => setIsShown(true)}
             onMouseLeave={() => setIsShown(false)}>
@@ -111,7 +130,6 @@ const SnapContainer = () => {
             <HighScoreList highScores={highScores} deleteHighScore={deleteHighScore}/>
         </div>
         )
-
 }
 
 export default SnapContainer;
