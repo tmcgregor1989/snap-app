@@ -95,6 +95,14 @@ const SnapContainer = () => {
     
     
       }
+    //   function to be added to appropriate component in order to invoke updatePlayerScore function
+    // const giveWinnerPoints = () => {
+        // updatePlayerScore({
+        //     _id: highScore._id,
+        //     name: highScore.name,
+        //     score: (take score from game somehow)
+        // })
+    
 
     
 

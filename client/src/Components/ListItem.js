@@ -1,12 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 
-const ListItem = ({highScore, deleteHighScore}) => {
+const ListItem = ({highScore, deleteHighScore, index}) => {
 
 
     return (
         <div className='individual-player'>
-            <p>{highScore.name}</p>
-            <p>{highScore.score}</p>
+            <p>{index + 1}:  {highScore.name} {highScore.score}</p>
             <button onClick={()=>deleteHighScore(highScore._id)}>Remove Player from Scoreboard becuase they are a filthy cheat</button>
         </div>
     )

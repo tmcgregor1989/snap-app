@@ -7,8 +7,8 @@ const HighScoreList = ({highScores, deleteHighScore, descendingHighScores, getDe
 
     let desHighScores = highScores.sort((a, b) => b.score - a.score);
     let topTenScores = desHighScores.slice(0, 10);
-    let highScoreListItem = topTenScores.map((highScore) => { 
-        return <ListItem highScore={highScore} key={highScore._id} deleteHighScore={deleteHighScore}/>
+    let highScoreListItem = topTenScores.map((highScore, index) => { 
+        return <ListItem highScore={highScore} key={highScore._id} deleteHighScore={deleteHighScore} index={index}/>
     })
 
     return (
