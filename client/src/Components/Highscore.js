@@ -1,8 +1,12 @@
 import React from 'react';
 import ListItem from './ListItem';
 
-const HighScoreList = ({highScores, deleteHighScore}) => {
-    const highScoreListItem = highScores.map((highScore) => {
+const HighScoreList = ({highScores, deleteHighScore, descendingHighScores, getDescendingHighScores}) => {
+
+    
+
+    let desHighScores = highScores.sort((a, b) => b.score - a.score);
+    let highScoreListItem = desHighScores.map((highScore) => { 
         return <ListItem highScore={highScore} key={highScore._id} deleteHighScore={deleteHighScore}/>
     })
 

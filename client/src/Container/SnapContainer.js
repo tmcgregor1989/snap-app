@@ -15,6 +15,7 @@ const SnapContainer = () => {
     const [hand1, setHand1] = useState([])
     const [hand2, setHand2] = useState([])
     const [highScores, setHighScores] = useState([])
+    const [descendingHighScores, setDescendingHighScores] = useState([])
 
     // document.addEventListener('keydown', logKey);
 
@@ -74,6 +75,12 @@ const SnapContainer = () => {
         })
     }
 
+    const getDescendingHighScores = function(highScores){
+        let desHighScores = highScores.sort((a, b) => b.score-a.score);
+        setDescendingHighScores(desHighScores);
+
+    }
+
     const deleteHighScore = (id) => {
         dbDeleteHighScore(id).then(()=>{
             let temp = highScores.map(g=>g);
@@ -97,7 +104,7 @@ const SnapContainer = () => {
             <Player1Hand hand1={hand1}/>
             <Player2Hand hand2={hand2}/>
             <SnapPool pool={pool}/>
-            <HighScoreList highScores={highScores} deleteHighScore={deleteHighScore}/>
+            <HighScoreList highScores={highScores} deleteHighScore={deleteHighScore} getDescendingHighScores={getDescendingHighScores} desHighScores={descendingHighScores}/>
         </div>
         )
 
