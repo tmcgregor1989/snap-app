@@ -6,15 +6,16 @@ import SnapPool from "../Components/SnapPool";
 import { postHighScore as dbpostHighScore } from "../HighScoreService";
 import NameForm1 from "../Components/NameForm";
 import { getHighScores as dbGetHighScores, deleteHighScore as dbDeleteHighScore } from "../HighScoreService";
-
+import Instructions from "../Components/Instructions";
 
 
 const SnapContainer = () => {
 
-    const [pool, setPool] = useState([])
-    const [hand1, setHand1] = useState([])
-    const [hand2, setHand2] = useState([])
-    const [highScores, setHighScores] = useState([])
+    const [pool, setPool] = useState([]);
+    const [hand1, setHand1] = useState([]);
+    const [hand2, setHand2] = useState([]);
+    const [highScores, setHighScores] = useState([]);
+    const [isShown, setIsShown] = useState(false);
 
     // document.addEventListener('keydown', logKey);
 
@@ -83,10 +84,20 @@ const SnapContainer = () => {
             })
         }
 
-    
+
 
     return(
         <div id="container">
+            <button
+            onMouseEnter={() => setIsShown(true)}
+            onMouseLeave={() => setIsShown(false)}>
+            Instructions (Hover over me)
+            </button>
+            {isShown && (
+            <div>
+            <Instructions/>
+            </div>
+            )}
 
             <button onClick={dealPool}>Deal</button>
             <button onClick={playCard1}>Play card 1</button>
