@@ -5,7 +5,7 @@ import Player2Hand from "../Components/Player2Hand";
 import SnapPool from "../Components/SnapPool";
 import { postHighScore as dbpostHighScore } from "../HighScoreService";
 import NameForm1 from "../Components/NameForm";
-import { getHighScores as dbGetHighScores, deleteHighScore as dbDeleteHighScore } from "../HighScoreService";
+import { getHighScores as dbGetHighScores, deleteHighScore as dbDeleteHighScore, updateHighScore } from "../HighScoreService";
 
 
 
@@ -15,7 +15,6 @@ const SnapContainer = () => {
     const [hand1, setHand1] = useState([])
     const [hand2, setHand2] = useState([])
     const [highScores, setHighScores] = useState([])
-    const [descendingHighScores, setDescendingHighScores] = useState([])
 
     // document.addEventListener('keydown', logKey);
 
@@ -75,11 +74,7 @@ const SnapContainer = () => {
         })
     }
 
-    const getDescendingHighScores = function(highScores){
-        let desHighScores = highScores.sort((a, b) => b.score-a.score);
-        setDescendingHighScores(desHighScores);
-
-    }
+    
 
     const deleteHighScore = (id) => {
         dbDeleteHighScore(id).then(()=>{
@@ -89,6 +84,17 @@ const SnapContainer = () => {
             setHighScores(temp);
             })
         }
+
+    const updatePlayerScore = updatedScore => {
+        updateHighScore(updatedScore);
+    
+        const updatedScoreIndex = highScores.findIndex(highScore => highScore._id === updatedScore._id);
+        const updatedScores = [...highScores];
+        updatedScores[updatedScoreIndex] = updatedScore;
+        setHighScores(updatedScores);
+    
+    
+      }
 
     
 
@@ -104,7 +110,7 @@ const SnapContainer = () => {
             <Player1Hand hand1={hand1}/>
             <Player2Hand hand2={hand2}/>
             <SnapPool pool={pool}/>
-            <HighScoreList highScores={highScores} deleteHighScore={deleteHighScore} getDescendingHighScores={getDescendingHighScores} desHighScores={descendingHighScores}/>
+            <HighScoreList highScores={highScores} deleteHighScore={deleteHighScore} />
         </div>
         )
 
