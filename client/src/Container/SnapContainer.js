@@ -6,15 +6,16 @@ import SnapPool from "../Components/SnapPool";
 import { postHighScore as dbpostHighScore } from "../HighScoreService";
 import NameForm1 from "../Components/NameForm";
 import { getHighScores as dbGetHighScores, deleteHighScore as dbDeleteHighScore, updateHighScore } from "../HighScoreService";
-
+import Instructions from "../Components/Instructions";
 
 
 const SnapContainer = () => {
 
-    const [pool, setPool] = useState([])
-    const [hand1, setHand1] = useState([])
-    const [hand2, setHand2] = useState([])
-    const [highScores, setHighScores] = useState([])
+    const [pool, setPool] = useState([]);
+    const [hand1, setHand1] = useState([]);
+    const [hand2, setHand2] = useState([]);
+    const [highScores, setHighScores] = useState([]);
+    const [isShown, setIsShown] = useState(false);
 
     // document.addEventListener('keydown', logKey);
 
@@ -105,9 +106,42 @@ const SnapContainer = () => {
     
 
     
+    const [highlight, setHighlight] = useState("2px solid black");
+    function handleKeyPress(e) {
+        var key = e.key;
+        console.log( "You pressed a key: " + key );
+        if (key === "r") {
+            setHighlight("2px solid red");
+            if (hand1.length > 0){
+                let card = hand1.pop()
+                let newPool = [...pool, card]
+                setHand1(hand1)
+                setPool(newPool)
+            console.log(hand1)    
+            console.log(newPool)    
+            console.log(pool)    
+            }
+        }
+        else if (key === "g") {
+            setHighlight("2px solid green")
+        }
+    }
 
     return(
         <div id="container">
+            <div>
+            <input type="text" onKeyPress={(e) => handleKeyPress(e)} style={{border: highlight}} />
+            </div>
+            <button
+            onMouseEnter={() => setIsShown(true)}
+            onMouseLeave={() => setIsShown(false)}>
+            Instructions (Hover over me)
+            </button>
+            {isShown && (
+            <div>
+            <Instructions/>
+            </div>
+            )}
 
             <button onClick={dealPool}>Deal</button>
             <button onClick={playCard1}>Play card 1</button>
@@ -121,7 +155,6 @@ const SnapContainer = () => {
             <HighScoreList highScores={highScores} deleteHighScore={deleteHighScore} />
         </div>
         )
-
 }
 
 export default SnapContainer;
