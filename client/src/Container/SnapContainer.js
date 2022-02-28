@@ -20,6 +20,8 @@ const SnapContainer = () => {
     const [isShown, setIsShown] = useState(false);
     const [player1name, setPlayer1Name] = useState("");
     const [player2name, setPlayer2Name] = useState("");
+    const [selectedPlayer1, setSelectedPlayer1] = useState("");
+    const [selectedPlayer2, setSelectedPlayer2] = useState("");
 
     // document.addEventListener('keydown', logKey);
 
@@ -68,8 +70,15 @@ const SnapContainer = () => {
 
     const postHighScore = newHighScore => {
         dbpostHighScore(newHighScore)
-          .then(savedHighScore => setHighScores([ ...highScores, savedHighScore ]));
+          .then(savedHighScore => setHighScores([ ...highScores, savedHighScore ]))
+          .then(setSelectedPlayer1(newHighScore));
       };
+
+    const postHighScore2 = newHighScore => {
+        dbpostHighScore(newHighScore)
+          .then(savedHighScore => setHighScores([ ...highScores, savedHighScore ]))
+          .then(setSelectedPlayer2(newHighScore));
+      };  
 
     const getHighScores = function(){
         dbGetHighScores()
@@ -150,14 +159,14 @@ const SnapContainer = () => {
             <button onClick={dealPool}>Deal</button>
             <button onClick={playCard1}>Play card 1</button>
 
-            <NameForm1 postHighScore={postHighScore} setPlayer1Name={setPlayer1Name} setPlayer2Name={setPlayer2Name} player1name={player1name} player2name={player2name}/>
+            <NameForm1 postHighScore={postHighScore} postHighScore2={postHighScore2} setPlayer1Name={setPlayer1Name} setPlayer2Name={setPlayer2Name} player1name={player1name} player2name={player2name} setSelectedPlayer1={setSelectedPlayer1} setSelectedPlayer2={setSelectedPlayer2} selectedPlayer1={selectedPlayer1} selectedPlayer2={selectedPlayer2}/>
         
 
             <Player1Hand hand1={hand1}/>
             <Player2Hand hand2={hand2}/>
             <SnapPool pool={pool}/>
-            <Player1Info player1name={player1name}/>
-            <Player2Info player2name={player2name}/>
+            <Player1Info selectedPlayer1={selectedPlayer1}/>
+            <Player2Info selectedPlayer2={selectedPlayer2}/>
             <HighScoreList highScores={highScores} deleteHighScore={deleteHighScore} />
         </div>
         )

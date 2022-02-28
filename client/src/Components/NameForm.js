@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const NameForm1 = ({postHighScore, setPlayer1Name, setPlayer2Name, player1name, player2name}) =>{
+const NameForm1 = ({postHighScore, postHighScore2, setPlayer1Name, setPlayer2Name, player1name, player2name}) =>{
     // const [player1name, setPlayer1Name] = useState("");
     // const [player2name, setPlayer2Name] = useState("");
 
@@ -21,7 +21,7 @@ const NameForm1 = ({postHighScore, setPlayer1Name, setPlayer2Name, player1name, 
 
         const handleSubmit2 = (event) => {
             event.preventDefault();
-            postHighScore({
+            postHighScore2({
                 name: player2name,
                 score: 0,
               
