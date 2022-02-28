@@ -1,22 +1,9 @@
-//2 x text input fields, placeholdered with "player1", "player2".
-// START GAME button that pushes those names
-
-import {useState} from "react";
-
-// BELOW IS THE POSTPLAYERS FUNCTION:
-// export const postPlayers = (payload) => {
-//     return fetch(baseURL, {
-//         method: 'POST',
-//         body: JSON.stringify(payload),
-//         headers: { 'Content-Type': 'application/json'}
-//     })
-//     .then(res => res.json())
-// }
+import React from "react";
 
 
-const NameForm1 = ({postHighScore}) =>{
-    const [player1name, setPlayer1Name] = useState("");
-    const [player2name, setPlayer2Name] = useState("");
+const NameForm1 = ({postHighScore, postHighScore2, setPlayer1Name, setPlayer2Name, player1name, player2name}) =>{
+    // const [player1name, setPlayer1Name] = useState("");
+    // const [player2name, setPlayer2Name] = useState("");
 
     const handlePlayer1NameChange = (event) => setPlayer1Name(event.target.value);
     const handlePlayer2NameChange = (event) => setPlayer2Name(event.target.value);
@@ -34,7 +21,7 @@ const NameForm1 = ({postHighScore}) =>{
 
         const handleSubmit2 = (event) => {
             event.preventDefault();
-            postHighScore({
+            postHighScore2({
                 name: player2name,
                 score: 0,
               
