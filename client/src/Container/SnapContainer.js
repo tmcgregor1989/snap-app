@@ -7,6 +7,8 @@ import { postHighScore as dbpostHighScore } from "../HighScoreService";
 import NameForm1 from "../Components/NameForm";
 import { getHighScores as dbGetHighScores, deleteHighScore as dbDeleteHighScore, updateHighScore } from "../HighScoreService";
 import Instructions from "../Components/Instructions";
+import Player1Info from "../Components/Player1Info";
+import Player2Info from "../Components/Player2Info";
 
 
 const SnapContainer = () => {
@@ -16,6 +18,8 @@ const SnapContainer = () => {
     const [hand2, setHand2] = useState([]);
     const [highScores, setHighScores] = useState([]);
     const [isShown, setIsShown] = useState(false);
+    const [player1name, setPlayer1Name] = useState("");
+    const [player2name, setPlayer2Name] = useState("");
 
     // document.addEventListener('keydown', logKey);
 
@@ -146,12 +150,14 @@ const SnapContainer = () => {
             <button onClick={dealPool}>Deal</button>
             <button onClick={playCard1}>Play card 1</button>
 
-            <NameForm1 postHighScore={postHighScore}/>
+            <NameForm1 postHighScore={postHighScore} setPlayer1Name={setPlayer1Name} setPlayer2Name={setPlayer2Name} player1name={player1name} player2name={player2name}/>
         
 
             <Player1Hand hand1={hand1}/>
             <Player2Hand hand2={hand2}/>
             <SnapPool pool={pool}/>
+            <Player1Info player1name={player1name}/>
+            <Player2Info player2name={player2name}/>
             <HighScoreList highScores={highScores} deleteHighScore={deleteHighScore} />
         </div>
         )
