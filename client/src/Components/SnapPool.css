@@ -2,16 +2,20 @@
     grid-area: header;
 }
 
-.top {
+.left {
     grid-area: left;
 }
 
-.bottom {
+.middle {
+    grid-area: middle;
+}
+
+.right {
     grid-area: right;
 }
 
 .snappool {
     display: grid;
-    grid-template-areas: 'header header'
+    grid-template-areas: 'header header',
     'left right';
 }

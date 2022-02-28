@@ -13,9 +13,10 @@ const SnapPool =({pool}) =>{
 
     return(
         <div class="snappool">
-            <div class="count">Snap Pool:{pool.length} </div>
-            <div class="top">{snapPool[snapPool.length-1]} </div>
-            <div class="bottom">{snapPool[snapPool.length-2]}</div>
+            <div class="count">{pool.length} cards to be snapped up!</div>
+            <div class="left">{snapPool[snapPool.length-1]} </div>
+            <div class="middle">{snapPool[snapPool.length-2]}</div>
+            <div class="right">{snapPool[snapPool.length-3]}</div>
         </div>
     )
     };
