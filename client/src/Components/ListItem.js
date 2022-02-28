@@ -7,7 +7,7 @@ const ListItem = ({highScore, deleteHighScore}) => {
         <div className='individual-player'>
             <p>{highScore.name}</p>
             <p>{highScore.score}</p>
-            <button onClick={()=>deleteHighScore(highScore._id)}>Remove Player from Scoreboard becuase they are a filthy cheat</button>
+            <button onClick={()=>deleteHighScore(highScore._id)}>Remove Player from Scoreboard because they are a filthy cheat</button>
         </div>
     )
 }
