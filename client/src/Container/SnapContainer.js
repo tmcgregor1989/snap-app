@@ -122,11 +122,16 @@ const SnapContainer = () => {
         
     }
 
+    const givePlayer2FinalScore = () => {
+        updatePlayerScore({
+            _id: selectedPlayer2._id,
+            name: selectedPlayer2.name,
+            score: score2
+        })
+    }
     
-    
-
-    
-    const [highlight, setHighlight] = useState("2px solid black");
+        
+    // const [highlight, setHighlight] = useState("2px solid black");
     function handleKeyPress(e) {
         var key = e.key;
         if (key === "a") {
@@ -171,22 +176,19 @@ const SnapContainer = () => {
                 setScore2(newScore2)
             }
         }
-        else if (key === "g") {
-            setHighlight("2px solid green")
-        }
+        // else if (key === "g") {
+        //     setHighlight("2px solid green")
+        // }
 
-    //     const gameEnd = function (){
-    //         if{
+        // const gameEnd = function (){
+        //     if{
                 
-    //         }
-    // //     }
+        //     }
+    //     }
     }
 
     return(
         <div id="container">
-            <div>
-            <input type="text" onKeyPress={(e) => handleKeyPress(e)} />
-            </div>
             <button
             onMouseEnter={() => setIsShown(true)}
             onMouseLeave={() => setIsShown(false)}>
@@ -197,7 +199,9 @@ const SnapContainer = () => {
             <Instructions/>
             </div>
             )}
-
+            <div>
+            <input type="text" onKeyPress={(e) => handleKeyPress(e)} />
+            </div>
             <button onClick={dealPool}>Deal</button>
             <button onClick={playCard1}>Play card 1</button>
 
