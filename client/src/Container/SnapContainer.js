@@ -26,7 +26,7 @@ const SnapContainer = () => {
     const [selectedPlayer1, setSelectedPlayer1] = useState("");
     const [selectedPlayer2, setSelectedPlayer2] = useState("");
 
-    // document.addEventListener('keydown', logKey);
+    //document.addEventListener('keydown', logKey);
 
     useEffect(() => {
         getPool();
@@ -122,31 +122,42 @@ const SnapContainer = () => {
         
     }
 
-    
-    
+
+    const gameEnd = function (){
+        if (hand1.length === 52){
+            givePlayer1FinalScore()
+            setScore2(0)
+            // givePlayer2FinalScore()
+        }
+        if (hand2.length === 52){
+            // givePlayer2FinalScore()
+            setScore1(0)
+            givePlayer1FinalScore()
+        }
+    }
 
     
     const [highlight, setHighlight] = useState("2px solid black");
     function handleKeyPress(e) {
         var key = e.key;
         if (key === "a") {
-            if (hand1.length > 0){
+            if ((hand1.length > 0) && (((pool.length % 2) === 0)) || (hand2.length === 0)){
                 let card = hand1.pop()
                 let newPool = [...pool, card]
                 setHand1(hand1)
-                setPool(newPool)  
+                setPool(newPool)
             }
         }
         if (key === "l") {
-            if (hand2.length > 0){
+            if ((hand2.length > 0) && (((pool.length % 2) === 1)) || (hand1.length === 0)){
                 let card = hand2.pop()
                 let newPool = [...pool, card]
                 setHand2(hand2)
-                setPool(newPool)  
+                setPool(newPool)
             }
         }
         if (key === "d") {
-            if (pool[pool.length-1].value === pool[pool.length-2].value){
+            if ((pool[pool.length-1].value === pool[pool.length-2].value) || (pool[pool.length-1].value === pool[pool.length-3].value)){
                 let newScore1 = (score1 + pool.length)
                 setScore1(newScore1)
                 let newHand1 = hand1.concat(pool)
@@ -159,27 +170,30 @@ const SnapContainer = () => {
             }
         }
         if (key === "j") {
-            if (pool[pool.length-1].value === pool[pool.length-2].value){
+            if ((pool[pool.length-1].value === pool[pool.length-2].value) || (pool[pool.length-1].value === pool[pool.length-3].value)){
                 let newScore2 = (score2 + pool.length)
                 setScore2(newScore2)
                 let newHand2 = hand2.concat(pool)
                 setHand2(newHand2)
                 setPool([])
+                gameEnd()
             }
             else {
                 let newScore2 = (score2 - 5)
                 setScore2(newScore2)
             }
         }
-        else if (key === "g") {
-            setHighlight("2px solid green")
+        if (((key === "l" ) || (key === "a")) && !((pool[pool.length-1].value === pool[pool.length-2].value) || (pool[pool.length-1].value === pool[pool.length-3].value)) && (pool.length === 52)){
+            dealPool()
         }
-
-    //     const gameEnd = function (){
-    //         if{
-                
-    //         }
-    // //     }
+        if (key === "p"){ //player 2 cheat button to scoop up all of pool
+            let newScore2 = (score2 + pool.length)
+            setScore2(newScore2)
+            let newHand2 = hand2.concat(pool)
+            setHand2(newHand2)
+            setPool([])
+            gameEnd()
+        }
     }
 
     return(
