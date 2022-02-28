@@ -8,7 +8,6 @@ const Card = ({card, index}) => {
          <img src={card.image} alt={`${card.value} OF ${card.suit}`}></img>
         </div>
     )
-
 }
 
 export default Card

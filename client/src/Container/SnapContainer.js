@@ -18,6 +18,8 @@ const SnapContainer = () => {
     const [hand2, setHand2] = useState([]);
     const [highScores, setHighScores] = useState([]);
     const [isShown, setIsShown] = useState(false);
+    const [score1, setScore1] = useState([]);
+    const [score2, setScore2] = useState([]);
     const [player1name, setPlayer1Name] = useState("");
     const [player2name, setPlayer2Name] = useState("");
     const [selectedPlayer1, setSelectedPlayer1] = useState("");
@@ -123,20 +125,51 @@ const SnapContainer = () => {
     function handleKeyPress(e) {
         var key = e.key;
         console.log( "You pressed a key: " + key );
-        if (key === "r") {
-            setHighlight("2px solid red");
+        if (key === "a") {
             if (hand1.length > 0){
                 let card = hand1.pop()
                 let newPool = [...pool, card]
                 setHand1(hand1)
-                setPool(newPool)
-            console.log(hand1)    
-            console.log(newPool)    
-            console.log(pool)    
+                setPool(newPool)  
+            }
+        }
+        if (key === "l") {
+            setHighlight("2px solid red");
+            if (hand2.length > 0){
+                let card = hand2.pop()
+                let newPool = [...pool, card]
+                setHand2(hand2)
+                setPool(newPool)  
+            }
+        if (key === "d") {
+            if (pool[-1].value === pool[-2].value){
+                let newScore1 = (score1 += pool.length)
+                setScore1(newScore1)
+                let newHand1 = [...hand1, pool]
+                setHand1(newHand1)
+                setPool([])
+            }
+            else {
+                let newScore1 = (score1 -5)
+                setScore1(newScore1)
+            }
+        }
+        if (key === "j") {
+            if (pool[-1].value === pool[-2].value){
+                let newScore2 = (score2 += pool.length)
+                setScore2(newScore2)
+                let newHand2 = [...hand2, pool]
+                setHand1(newHand2)
+                setPool([])
+            }
+            else {
+                let newScore2 = (score2 -5)
+                setScore2(newScore2)
             }
         }
         else if (key === "g") {
             setHighlight("2px solid green")
+        }
         }
     }
 

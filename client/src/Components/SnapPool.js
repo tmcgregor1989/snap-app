@@ -4,21 +4,35 @@
 
 
 import React from "react";
-// import Card from "./Card";
+import Card from "./Card";
 
-const SnapPool = ({pool}) => {
+const SnapPool =({pool}) =>{
 
-    // const poolList = pool.map((card, index) => { 
-    //     return <Card card={card} key={index} index={index}/>
-    // });
+    const snapPool = pool.map((card, index) => { 
+            return <Card 
+            card={card} 
+            key={index} 
+            index={index}/>
+        });
 
     return(
         <div>
             <ul>
-                Snap Pool:{pool.length}
-            </ul>
+                    Snap Pool:{pool.length}
+                    {snapPool[snapPool.length-1]}
+                    {snapPool[snapPool.length-2]}
+                </ul>
         </div>
     )
-};
-
+    };
 export default SnapPool;
+
+// const poolList = pool.map((card, index) => { 
+//     return <Card 
+//     card={card} 
+//     key={index} 
+//     index={index}/>
+// });
+
+
+
