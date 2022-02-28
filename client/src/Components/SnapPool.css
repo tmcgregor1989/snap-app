@@ -1,0 +1,17 @@
+.count {
+    grid-area: header;
+}
+
+.top {
+    grid-area: left;
+}
+
+.bottom {
+    grid-area: right;
+}
+
+.snappool {
+    display: grid;
+    grid-template-areas: 'header header'
+    'left right';
+}
