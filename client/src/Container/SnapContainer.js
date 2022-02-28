@@ -95,7 +95,10 @@ const SnapContainer = () => {
                 let newPool = [...pool, card]
                 setHand1(hand1)
                 setPool(newPool)
-                }
+            console.log(hand1)    
+            console.log(newPool)    
+            console.log(pool)    
+            }
         }
         else if (key === "g") {
             setHighlight("2px solid green")
