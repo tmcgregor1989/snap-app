@@ -1,10 +1,9 @@
 
-const Player1Info = ({selectedPlayer1}) =>{
+const Player1Info = ({selectedPlayer1, score1}) =>{
     return (
         <div className="playerInfo">
-            <h2>Player 1 Info</h2>
-            <h3>{selectedPlayer1.name}</h3>
-            <p>Score:</p>
+            <h2>Player 1: {selectedPlayer1.name}</h2>
+            <h3>Score: {score1}</h3>
         </div>
     )
 }
