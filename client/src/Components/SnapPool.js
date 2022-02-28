@@ -17,11 +17,9 @@ const SnapPool =({pool}) =>{
 
     return(
         <div>
-            <ul>
-                    Snap Pool:{pool.length}
-                    {snapPool[snapPool.length-1]}
+                    Snap Pool:{pool.length} 
+                    {snapPool[snapPool.length-1]} 
                     {snapPool[snapPool.length-2]}
-                </ul>
         </div>
     )
     };

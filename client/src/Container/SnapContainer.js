@@ -9,6 +9,7 @@ import { getHighScores as dbGetHighScores, deleteHighScore as dbDeleteHighScore,
 import Instructions from "../Components/Instructions";
 import Player1Info from "../Components/Player1Info";
 import Player2Info from "../Components/Player2Info";
+import snapPool from "../Components/SnapPool";
 
 
 const SnapContainer = () => {
@@ -18,8 +19,8 @@ const SnapContainer = () => {
     const [hand2, setHand2] = useState([]);
     const [highScores, setHighScores] = useState([]);
     const [isShown, setIsShown] = useState(false);
-    const [score1, setScore1] = useState([]);
-    const [score2, setScore2] = useState([]);
+    const [score1, setScore1] = useState(0);
+    const [score2, setScore2] = useState(0);
     const [player1name, setPlayer1Name] = useState("");
     const [player2name, setPlayer2Name] = useState("");
     const [selectedPlayer1, setSelectedPlayer1] = useState("");
@@ -85,7 +86,7 @@ const SnapContainer = () => {
     const getHighScores = function(){
         dbGetHighScores()
         .then((data) => {
-            console.log(data);
+            // console.log(data);
             setHighScores(data)
         })
     }
@@ -112,19 +113,22 @@ const SnapContainer = () => {
     
       }
     //   function to be added to appropriate component in order to invoke updatePlayerScore function
-    // const giveWinnerPoints = () => {
-        // updatePlayerScore({
-        //     _id: highScore._id,
-        //     name: highScore.name,
-        //     score: (take score from game somehow)
-        // })
+    const givePlayer1FinalScore = () => {
+        updatePlayerScore({
+            _id: selectedPlayer1._id,
+            name: selectedPlayer1.name,
+            score: score1
+        })
+        
+    }
+
+    
     
 
     
     const [highlight, setHighlight] = useState("2px solid black");
     function handleKeyPress(e) {
         var key = e.key;
-        console.log( "You pressed a key: " + key );
         if (key === "a") {
             if (hand1.length > 0){
                 let card = hand1.pop()
@@ -134,49 +138,54 @@ const SnapContainer = () => {
             }
         }
         if (key === "l") {
-            setHighlight("2px solid red");
             if (hand2.length > 0){
                 let card = hand2.pop()
                 let newPool = [...pool, card]
                 setHand2(hand2)
                 setPool(newPool)  
             }
+        }
         if (key === "d") {
-            if (pool[-1].value === pool[-2].value){
-                let newScore1 = (score1 += pool.length)
+            if (pool[pool.length-1].value === pool[pool.length-2].value){
+                let newScore1 = (score1 + pool.length)
                 setScore1(newScore1)
-                let newHand1 = [...hand1, pool]
+                let newHand1 = hand1.concat(pool)
                 setHand1(newHand1)
                 setPool([])
             }
             else {
-                let newScore1 = (score1 -5)
-                setScore1(newScore1)
+                let newScore = (score1 - 5)
+                setScore1(newScore)
             }
         }
         if (key === "j") {
-            if (pool[-1].value === pool[-2].value){
-                let newScore2 = (score2 += pool.length)
+            if (pool[pool.length-1].value === pool[pool.length-2].value){
+                let newScore2 = (score2 + pool.length)
                 setScore2(newScore2)
-                let newHand2 = [...hand2, pool]
-                setHand1(newHand2)
+                let newHand2 = hand2.concat(pool)
+                setHand2(newHand2)
                 setPool([])
             }
             else {
-                let newScore2 = (score2 -5)
+                let newScore2 = (score2 - 5)
                 setScore2(newScore2)
             }
         }
         else if (key === "g") {
             setHighlight("2px solid green")
         }
-        }
+
+    //     const gameEnd = function (){
+    //         if{
+                
+    //         }
+    // //     }
     }
 
     return(
         <div id="container">
             <div>
-            <input type="text" onKeyPress={(e) => handleKeyPress(e)} style={{border: highlight}} />
+            <input type="text" onKeyPress={(e) => handleKeyPress(e)} />
             </div>
             <button
             onMouseEnter={() => setIsShown(true)}
@@ -197,9 +206,9 @@ const SnapContainer = () => {
 
             <Player1Hand hand1={hand1}/>
             <Player2Hand hand2={hand2}/>
+            <Player1Info selectedPlayer1={selectedPlayer1} score1={score1}/>
+            <Player2Info selectedPlayer2={selectedPlayer2} score2={score2}/>
             <SnapPool pool={pool}/>
-            <Player1Info selectedPlayer1={selectedPlayer1}/>
-            <Player2Info selectedPlayer2={selectedPlayer2}/>
             <HighScoreList highScores={highScores} deleteHighScore={deleteHighScore} />
         </div>
         )
