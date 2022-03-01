@@ -11,8 +11,8 @@ import Controls from "../Components/Controls";
 import Player1Info from "../Components/Player1Info";
 import Player2Info from "../Components/Player2Info";
 import snapPool from "../Components/SnapPool";
+import PlayerSelector from "../Components/PlayerSelect";
 import './SnapContainer.css';
-
 
 
 const SnapContainer = () => {
@@ -27,8 +27,8 @@ const SnapContainer = () => {
     const [score2, setScore2] = useState(0);
     const [player1name, setPlayer1Name] = useState("");
     const [player2name, setPlayer2Name] = useState("");
-    const [selectedPlayer1, setSelectedPlayer1] = useState("");
-    const [selectedPlayer2, setSelectedPlayer2] = useState("");
+    const [selectedPlayer1, setSelectedPlayer1] = useState({});
+    const [selectedPlayer2, setSelectedPlayer2] = useState({});
 
     //document.addEventListener('keydown', logKey);
 
@@ -78,14 +78,15 @@ const SnapContainer = () => {
     const postHighScore = newHighScore => {
         dbpostHighScore(newHighScore)
           .then(savedHighScore => setHighScores([ ...highScores, savedHighScore ]))
-          .then(setSelectedPlayer1(newHighScore));
       };
 
-    const postHighScore2 = newHighScore => {
-        dbpostHighScore(newHighScore)
-          .then(savedHighScore => setHighScores([ ...highScores, savedHighScore ]))
-          .then(setSelectedPlayer2(newHighScore));
-      };  
+    // const postHighScore2 = newHighScore => {
+    //     dbpostHighScore(newHighScore)
+    //       .then(savedHighScore => setHighScores([ ...highScores, savedHighScore ]))
+    //   };
+
+   
+      
 
     const getHighScores = function(){
         dbGetHighScores()
@@ -118,23 +119,37 @@ const SnapContainer = () => {
       }
     //   function to be added to appropriate component in order to invoke updatePlayerScore function
     const givePlayer1FinalScore = () => {
-        updatePlayerScore({
-            _id: selectedPlayer1._id,
-            name: selectedPlayer1.name,
-            score: score1
+        if (score1 > selectedPlayer1.score){
+            updatePlayerScore({
+                _id: selectedPlayer1._id,
+                name: selectedPlayer1.name,
+                score: score1
         })
+    } else {
+        console.log("Score not good enough!!!");
+    }
         
     }
+
+    const givePlayer2FinalScore = () => {
+        if (score2 > selectedPlayer2.score){
+        updatePlayerScore({
+            _id: selectedPlayer2._id,
+            name: selectedPlayer2.name,
+            score: score2
+        })
+        
+    }}
 
 
     const gameEnd = function (){
         if (hand1.length === 52){
             givePlayer1FinalScore()
             setScore2(0)
-            // givePlayer2FinalScore()
+            givePlayer2FinalScore()
         }
         if (hand2.length === 52){
-            // givePlayer2FinalScore()
+            givePlayer2FinalScore()
             setScore1(0)
             givePlayer1FinalScore()
         }
@@ -203,7 +218,8 @@ const SnapContainer = () => {
     return(
         <div class="container">
             <div class="playerform">
-            <NameForm1 postHighScore={postHighScore} postHighScore2={postHighScore2} setPlayer1Name={setPlayer1Name} setPlayer2Name={setPlayer2Name} player1name={player1name} player2name={player2name} setSelectedPlayer1={setSelectedPlayer1} setSelectedPlayer2={setSelectedPlayer2} selectedPlayer1={selectedPlayer1} selectedPlayer2={selectedPlayer2}/>
+            <NameForm1 postHighScore={postHighScore} setPlayer1Name={setPlayer1Name} player1name={player1name}/>
+            <PlayerSelector highScores={highScores} setSelectedPlayer1={setSelectedPlayer1} setSelectedPlayer2={setSelectedPlayer2}/>
             <button type="text" onKeyPress={(e) => handleKeyPress(e)} onClick={dealPool}>Start Game</button>
             </div>
             <div class="title">
@@ -230,11 +246,7 @@ const SnapContainer = () => {
             <Controls/>
             </div>
             )}
-            </div>
-            {/* <button onClick={dealPool}>Deal</button> */}
-            {/* <button onClick={playCard1}>Play card 1</button> */}
-            
-
+            </div>         
             <Player1Hand hand1={hand1}/>
             <div class="snappool">
             <SnapPool pool={pool}/>
