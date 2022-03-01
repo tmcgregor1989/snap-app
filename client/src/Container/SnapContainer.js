@@ -223,7 +223,7 @@ const SnapContainer = () => {
             <button type="text" onKeyPress={(e) => handleKeyPress(e)} onClick={dealPool}>Start Game</button>
             </div>
             <div class="title">
-                SNAP
+                <h1><u>SNAP</u></h1>
             </div>
             <div class="instructions">
             <button
@@ -246,12 +246,15 @@ const SnapContainer = () => {
             <Controls/>
             </div>
             )}
-            </div>         
+            <div class="p1hand">
             <Player1Hand hand1={hand1}/>
+            </div>
             <div class="snappool">
             <SnapPool pool={pool}/>
             </div>
+            <div class="p2hand">
             <Player2Hand hand2={hand2}/>
+            </div>
             <Player1Info selectedPlayer1={selectedPlayer1} score1={score1}/>
             <HighScoreList highScores={highScores} deleteHighScore={deleteHighScore} />
             <Player2Info selectedPlayer2={selectedPlayer2} score2={score2}/>

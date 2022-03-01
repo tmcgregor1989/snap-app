@@ -1,9 +1,15 @@
 .container {
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    /* grid-template-rows: 10% 70% 20%; */
-    background-image: "./felt.jpeg";
+    background-size: 100%;
+    /* background-image: url("../Components/images/felt.jpeg"); */
+    /* background-image: url("../Components/images/felt4suits.webp"); */
+    /* background-image: url("../Components/images/feltlowres.jpeg"); */
+    /* background-image: url("../Components/images/feltsuitpattern.jpeg"); */
+    /* background-image: url("../Components/images/table2.webp"); */
+    /* background-image: url("../Components/images/table3.webp"); */
     background-color: seagreen;
+    background-repeat: no-repeat;
     padding: 10px;
     text-align: center;
 }
@@ -18,8 +24,8 @@
 
 .snappool {
     display: grid;
-    grid-template-areas: 'header header'
-    'left right';
+    grid-template-areas: 'header header header'
+    'left middle right';
 }
 
 .ipopup {
@@ -28,4 +34,52 @@
 
 .cpopup {
     text-align: left;
+}
+
+.p1hand{
+    background-image: url("../Components/images/redcardback.png");
+    background-size: contain;
+        /* need to work on sizing of this compared to snap pool */
+    /* heialllght: 100%; */
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding-top: 23%;
+    text-shadow: 2px 2px blue;
+
+    /* padding-right: 6%; */
+}
+
+.p2hand{
+    background-image: url("../Components/images/bluecardback.png");
+    background-size: contain;
+    /* need to work on sizing of this compared to snap pool */
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding-top: 23%;
+    text-shadow: 2px 2px red;
+    /* padding-right: 6%; */
+}
+
+.title{
+    color: #fff;
+    /* font-family: "Vibur", sans-serif; */
+    text-shadow:
+      /* 0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #0fa,
+      0 0 82px #0fa,
+      0 0 92px #0fa,
+      0 0 102px #0fa,
+      0 0 151px #0fa; */
+
+
+      0 0 4px #fff,
+      0 0 10px #fff,
+      0 0 18px #fff,
+      0 0 38px #f09,
+      0 0 73px #f09,
+      0 0 80px #f09,
+      0 0 94px #f09,
+      0 0 140px #f09;
 }
