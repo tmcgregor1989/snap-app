@@ -1,7 +1,9 @@
 .card1 {
     position: relative;
     z-index: 3;
-    
+    height: 314px;
+    width: 226px;
+
 }
 
 .card2 {
@@ -10,6 +12,9 @@
     position: relative;
     z-index: 2;
     transform: rotate(30deg); 
+    height: 314px;
+    width: 226px;
+
 }
 
 .card3 {
@@ -18,4 +23,7 @@
     position: fixed;
     z-index: 1;
     transform: rotate(45deg); 
+    height: 314px;
+    width: 226px;
+
 }
