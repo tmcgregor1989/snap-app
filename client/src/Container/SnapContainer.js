@@ -13,6 +13,7 @@ import Player2Info from "../Components/Player2Info";
 import snapPool from "../Components/SnapPool";
 import PlayerSelector from "../Components/PlayerSelect";
 import './SnapContainer.css';
+import EndGame from "../Components/EndGame";
 
 
 const SnapContainer = () => {
@@ -31,6 +32,8 @@ const SnapContainer = () => {
     const [selectedPlayer2, setSelectedPlayer2] = useState({});
     const [turn, setTurn] = useState(1);
     const [gameState, setGameState] = useState("pre-game")
+    const [gameEnded, setGameEnded] = useState(false)
+    const [winner, setWinner] = useState({})
 
     //document.addEventListener('keydown', logKey);
 
@@ -151,13 +154,13 @@ const SnapContainer = () => {
             givePlayer1FinalScore()
             setScore2(0)
             givePlayer2FinalScore()
-            setGameState("game-ended")
+            setGameEnded(true)
         }
         if (hand2.length === 52){
             givePlayer2FinalScore()
             setScore1(0)
             givePlayer1FinalScore()
-            setGameState("game-ended")
+            setGameEnded(true)
         }
     }
 
@@ -263,7 +266,7 @@ const SnapContainer = () => {
             <Player1Hand hand1={hand1}/>
             </div>
             <div class="snappool">
-            <SnapPool pool={pool}/>
+            {gameEnded ? <EndGame score1={score1} score2={score2} selectedPlayer1={selectedPlayer1} selectedPlayer2={selectedPlayer2} winner={winner} setWinner={setWinner} setGameEnded={setGameEnded} setGameState={setGameState}/> : <SnapPool pool={pool}/>}
             </div>
             <div class="p2hand">
             <Player2Hand hand2={hand2}/>

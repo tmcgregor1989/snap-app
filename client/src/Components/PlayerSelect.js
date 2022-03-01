@@ -20,15 +20,15 @@ const PlayerSelector = ({highScores, setSelectedPlayer1, setSelectedPlayer2}) =>
 
     return(
         <div className="playerselector">
-            <h3>Player 1 select</h3>
+            <h3>Player Select</h3>
             <select defaultValue="" onChange={handleChange1}>
-            <option value="">Player List</option>
+            <option value="">Player 1</option>
             {playerOptions}
         </select>
 
-            <h3>Player 2 select</h3>
+            <h3></h3>
             <select defaultValue="" onChange={handleChange2}>
-            <option value="">Player List</option>
+            <option value="">Player 2</option>
             {playerOptions}
         </select>
         </div>
