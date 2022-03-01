@@ -10,9 +10,9 @@ import Instructions from "../Components/Instructions";
 import Controls from "../Components/Controls";
 import Player1Info from "../Components/Player1Info";
 import Player2Info from "../Components/Player2Info";
-import snapPool from "../Components/SnapPool";
 import PlayerSelector from "../Components/PlayerSelect";
 import './SnapContainer.css';
+import { GiAce } from "react-icons/gi";
 
 
 const SnapContainer = () => {
@@ -218,42 +218,40 @@ const SnapContainer = () => {
     return(
         <div class="container">
             <div class="playerform">
-            <NameForm1 postHighScore={postHighScore} setPlayer1Name={setPlayer1Name} player1name={player1name}/>
-            <PlayerSelector highScores={highScores} setSelectedPlayer1={setSelectedPlayer1} setSelectedPlayer2={setSelectedPlayer2}/>
-            <button type="text" onKeyPress={(e) => handleKeyPress(e)} onClick={dealPool}>Start Game</button>
+                <NameForm1 postHighScore={postHighScore} setPlayer1Name={setPlayer1Name} player1name={player1name}/>
+                <PlayerSelector highScores={highScores} setSelectedPlayer1={setSelectedPlayer1} setSelectedPlayer2={setSelectedPlayer2}/>
+                <button type="text" onKeyPress={(e) => handleKeyPress(e)} onClick={dealPool}>Start Game <GiAce/></button>
             </div>
             <div class="title">
-                <h1><u>SNAP</u></h1>
+                <h1><u></u><div class="neon-wrapper"><div class="neon-text">SNAP</div></div></h1>
             </div>
             <div class="instructions">
-            <button
-            onMouseEnter={() => setIsShown(true)}
-            onMouseLeave={() => setIsShown(false)}>
-            Instructions
-            </button>
-            <button 
-            onMouseEnter={() => setIsShown2(true)}
-            onMouseLeave={() => setIsShown2(false)}>
-            Controls
-            </button>
-            {isShown && (
-            <div class="ipopup">
-            <Instructions/>
+                <button
+                    onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>Instructions</button>
+                <button onMouseEnter={() => setIsShown2(true)} onMouseLeave={() => setIsShown2(false)}>Controls</button>
+                {isShown && (
+                <div class="ipopup">
+                <Instructions/>
+                </div>
+                )}
+                {isShown2 && (
+                <div class="cpopup">
+                    <Controls/>
+                </div>
+                )}
             </div>
-            )}
-            {isShown2 && (
-            <div class="cpopup">
-            <Controls/>
-            </div>
-            )}
             <div class="p1hand">
-            <Player1Hand hand1={hand1}/>
+                <div class="handcount">
+                    <Player1Hand hand1={hand1}/>
+                </div>
             </div>
             <div class="snappool">
-            <SnapPool pool={pool}/>
+                <SnapPool pool={pool}/>
             </div>
             <div class="p2hand">
-            <Player2Hand hand2={hand2}/>
+                <div class="handcount">
+                    <Player2Hand hand2={hand2}/>
+                </div>
             </div>
             <Player1Info selectedPlayer1={selectedPlayer1} score1={score1}/>
             <HighScoreList highScores={highScores} deleteHighScore={deleteHighScore} />
