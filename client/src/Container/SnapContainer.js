@@ -70,13 +70,6 @@ const SnapContainer = () => {
 
     }
 
-    // function logKey(a) {
-    //     hand1.shift()
-    //     setHand1(hand1)
-    //     console.log(hand1)
-
-    // }
-
     const playCard1 = function(){
     if (hand1.length > 0){
         let card = hand1.pop()
