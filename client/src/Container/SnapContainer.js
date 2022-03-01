@@ -29,6 +29,8 @@ const SnapContainer = () => {
     const [player2name, setPlayer2Name] = useState("");
     const [selectedPlayer1, setSelectedPlayer1] = useState({});
     const [selectedPlayer2, setSelectedPlayer2] = useState({});
+    const [turn, setTurn] = useState(1);
+    const [gameState, setGameState] = useState("pre-game")
 
     //document.addEventListener('keydown', logKey);
 
@@ -56,6 +58,8 @@ const SnapContainer = () => {
         setPool(newPool)
         setHand1(newHand1)
         setHand2(newHand2)
+        setGameState("game-started")
+
     }
 
     // function logKey(a) {
@@ -147,11 +151,13 @@ const SnapContainer = () => {
             givePlayer1FinalScore()
             setScore2(0)
             givePlayer2FinalScore()
+            setGameState("game-ended")
         }
         if (hand2.length === 52){
             givePlayer2FinalScore()
             setScore1(0)
             givePlayer1FinalScore()
+            setGameState("game-ended")
         }
     }
 
@@ -160,19 +166,21 @@ const SnapContainer = () => {
     function handleKeyPress(e) {
         var key = e.key;
         if (key === "a") {
-            if ((hand1.length > 0) && (((pool.length % 2) === 0)) || (hand2.length === 0)){
+            if ((hand1.length > 0) && (turn === 1)){
                 let card = hand1.pop()
                 let newPool = [...pool, card]
                 setHand1(hand1)
                 setPool(newPool)
+                setTurn(2)
             }
         }
         if (key === "l") {
-            if ((hand2.length > 0) && (((pool.length % 2) === 1)) || (hand1.length === 0)){
+            if ((hand2.length > 0) && (turn === 2)){
                 let card = hand2.pop()
                 let newPool = [...pool, card]
                 setHand2(hand2)
                 setPool(newPool)
+                setTurn(1)
             }
         }
         if (key === "d") {
@@ -182,10 +190,12 @@ const SnapContainer = () => {
                 let newHand1 = hand1.concat(pool)
                 setHand1(newHand1)
                 setPool([])
+                setTurn(1)
             }
             else {
                 let newScore = (score1 - 5)
                 setScore1(newScore)
+                setTurn(2)
             }
         }
         if (key === "j") {
@@ -196,10 +206,12 @@ const SnapContainer = () => {
                 setHand2(newHand2)
                 setPool([])
                 gameEnd()
+                setTurn(2)
             }
             else {
                 let newScore2 = (score2 - 5)
                 setScore2(newScore2)
+                setTurn(1)
             }
         }
         if (((key === "l" ) || (key === "a")) && !((pool[pool.length-1].value === pool[pool.length-2].value) || (pool[pool.length-1].value === pool[pool.length-3].value)) && (pool.length === 52)){
@@ -246,6 +258,7 @@ const SnapContainer = () => {
             <Controls/>
             </div>
             )}
+            </div>
             <div class="p1hand">
             <Player1Hand hand1={hand1}/>
             </div>
