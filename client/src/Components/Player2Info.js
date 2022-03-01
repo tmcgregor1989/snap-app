@@ -4,6 +4,7 @@ const Player2Info = ({selectedPlayer2, score2}) =>{
         <div className="playerInfo">
             <h2>{selectedPlayer2.name}</h2>
             <h3>Score: {score2}</h3>
+            
 
         </div>
     )

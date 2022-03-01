@@ -14,7 +14,6 @@ const EndGame = ({score1, score2, selectedPlayer1, selectedPlayer2, winner, setW
 
         const handleClick = () =>{
             setGameEnded(false)
-            setGameState("pre-game")
         }
 
 
