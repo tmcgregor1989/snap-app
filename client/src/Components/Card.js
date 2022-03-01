@@ -5,7 +5,7 @@ const Card = ({card, index}) => {
 
     return (
         <div>
-         <img src={card.image} alt={`${card.value} OF ${card.suit}`}></img>
+         <img src={card.image} alt={`${card.value} OF ${card.suit}`} id="card"></img>
         </div>
     )
 }

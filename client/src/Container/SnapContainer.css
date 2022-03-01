@@ -23,9 +23,10 @@
 }
 
 .snappool {
+    height: 314px;
     display: grid;
-    grid-template-areas: 'header header header'
-    'left middle right';
+    grid-template-columns: auto auto auto;
+    ;
 }
 
 .ipopup {

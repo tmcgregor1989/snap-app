@@ -21,7 +21,7 @@ const SnapPool =({pool, gameState}) =>{
                 {/* <div class="card4">{snapPool[snapPool.length-4]}</div>
                 <div class="card5">{snapPool[snapPool.length-5]}</div>
                 <div class="card6">{snapPool[snapPool.length-6]}</div> */}
-            </> : <p>hello</p>}
+            </> : <p></p>}
             
         </div>
     )
