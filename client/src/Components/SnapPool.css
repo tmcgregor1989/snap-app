@@ -1,21 +1,21 @@
-.count {
-    grid-area: header;
+.card1 {
+    position: relative;
+    z-index: 3;
+    
 }
 
-.left {
-    grid-area: left;
+.card2 {
+    top: 0.3;
+    left: 0.3;
+    position: relative;
+    z-index: 2;
+    transform: rotate(30deg); 
 }
 
-.middle {
-    grid-area: middle;
-}
+.card3 {
 
-.right {
-    grid-area: right;
-}
-
-.snappool {
-    display: grid;
-    grid-template-areas: 'header header',
-    'left right';
+    left: 0.3;
+    position: fixed;
+    z-index: 1;
+    transform: rotate(45deg); 
 }
