@@ -1,5 +1,6 @@
 import React from 'react';
 import ListItem from './ListItem';
+import './scoreBoard.css'
 
 const HighScoreList = ({highScores, deleteHighScore, descendingHighScores, getDescendingHighScores}) => {
 
@@ -13,9 +14,8 @@ const HighScoreList = ({highScores, deleteHighScore, descendingHighScores, getDe
 
     return (
         <div className='highScoreBoard'>
-            <h3>High Scores: {highScoreListItem}</h3>
-        
-            <marquee>{highScoreListItem}</marquee>
+            <marquee scrolldelay="60" hspace="0"><h3>High Scores: {highScoreListItem}</h3></marquee>
+    
         </div>
     )
 }

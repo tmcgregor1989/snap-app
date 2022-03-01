@@ -16,11 +16,12 @@ const NameForm1 = ({postHighScore, setPlayer1Name, player1name}) =>{
             score: 0
         });
 
+
     }
 
     return (
         <div className="form">
-        <form className="" onSubmit={handleSubmit1} method="post">
+        <form className="" onSubmit={handleSubmit1} method="post" id="playerForm">
             <label htmlFor="player1name">Add Player:</label>
             <input onChange={handlePlayer1NameChange}type="text" id="player1name" required placeholder="Player Name"/>
 
