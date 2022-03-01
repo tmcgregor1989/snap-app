@@ -238,14 +238,13 @@ const SnapContainer = () => {
             <div class="playerform">
                 <NameForm1 postHighScore={postHighScore} setPlayer1Name={setPlayer1Name} player1name={player1name}/>
                 <PlayerSelector highScores={highScores} setSelectedPlayer1={setSelectedPlayer1} setSelectedPlayer2={setSelectedPlayer2}/>
-                <button type="text" onKeyPress={(e) => handleKeyPress(e)} onClick={dealPool}>Start Game <GiAce/></button>
+                <button type="text" onKeyPress={(e) => handleKeyPress(e)} onClick={dealPool} theme="pink">Start Game <GiAce/></button>
             </div>
             <div class="title">
                 <h1><u></u><div class="neon-wrapper"><div class="neon-text">SNAP</div></div></h1>
             </div>
             <div class="instructions">
-                <button
-                    onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>Instructions</button>
+                <button onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>Instructions</button>
                 <button onMouseEnter={() => setIsShown2(true)} onMouseLeave={() => setIsShown2(false)}>Controls</button>
                 {isShown && (
                 <div class="ipopup">
@@ -264,7 +263,7 @@ const SnapContainer = () => {
                 </div>
             </div>
             <div class="snappool">
-            {gameEnded ? <EndGame score1={score1} score2={score2} selectedPlayer1={selectedPlayer1} selectedPlayer2={selectedPlayer2} winner={winner} setWinner={setWinner} setGameEnded={setGameEnded} setGameState={setGameState}/> : <SnapPool pool={pool} gameState={gameState}/>}
+                {gameEnded ? <EndGame score1={score1} score2={score2} selectedPlayer1={selectedPlayer1} selectedPlayer2={selectedPlayer2} winner={winner} setWinner={setWinner} setGameEnded={setGameEnded} setGameState={setGameState}/> : <SnapPool pool={pool} gameState={gameState}/>}
             </div>
             <div class="p2hand">
                 <div class="handcount">
