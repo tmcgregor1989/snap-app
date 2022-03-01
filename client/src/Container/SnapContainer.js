@@ -241,7 +241,13 @@ const SnapContainer = () => {
                 <button type="text" onKeyPress={(e) => handleKeyPress(e)} onClick={dealPool} theme="pink">Start Game <GiAce/></button>
             </div>
             <div class="title">
-                <h1><u></u><div class="neon-wrapper"><div class="neon-text">SNAP</div></div></h1>
+                <h1><u></u><div class="neon-text">SNAP
+                    {/* <span class="flicker-1">S</span>
+                    <span class="flicker-2">N</span>
+                    <span class="flicker-3">A</span>
+                    <span class="flicker-4">P</span> */}
+                    </div>
+                    </h1>
             </div>
             <div class="instructions">
                 <button onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>Instructions</button>
