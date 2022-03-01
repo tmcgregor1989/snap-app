@@ -116,23 +116,27 @@ const SnapContainer = () => {
       }
     //   function to be added to appropriate component in order to invoke updatePlayerScore function
     const givePlayer1FinalScore = () => {
-        updatePlayerScore({
-            _id: selectedPlayer1._id,
-            name: selectedPlayer1.name,
-            score: score1
+        if (score1 > selectedPlayer1.score){
+            updatePlayerScore({
+                _id: selectedPlayer1._id,
+                name: selectedPlayer1.name,
+                score: score1
         })
+    } else {
+        console.log("Score not good enough!!!");
+    }
         
     }
 
     const givePlayer2FinalScore = () => {
-        console.log(selectedPlayer2.score);
+        if (score2 > selectedPlayer2.score){
         updatePlayerScore({
             _id: selectedPlayer2._id,
             name: selectedPlayer2.name,
             score: score2
         })
         
-    }
+    }}
 
 
     const gameEnd = function (){
