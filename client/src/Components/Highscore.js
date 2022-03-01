@@ -13,10 +13,9 @@ const HighScoreList = ({highScores, deleteHighScore, descendingHighScores, getDe
 
     return (
         <div className='highScoreBoard'>
-            <h3>High Scores</h3>
-        <ul>
-            {highScoreListItem}
-        </ul>
+            <h3>High Scores: {highScoreListItem}</h3>
+        
+            <marquee>{highScoreListItem}</marquee>
         </div>
     )
 }

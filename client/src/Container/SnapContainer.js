@@ -12,6 +12,7 @@ import Player1Info from "../Components/Player1Info";
 import Player2Info from "../Components/Player2Info";
 import PlayerSelector from "../Components/PlayerSelect";
 import './SnapContainer.css';
+import EndGame from "../Components/EndGame";
 import { GiAce } from "react-icons/gi";
 
 
@@ -30,6 +31,8 @@ const SnapContainer = () => {
     const [selectedPlayer1, setSelectedPlayer1] = useState({});
     const [selectedPlayer2, setSelectedPlayer2] = useState({});
     const [turn, setTurn] = useState(1);
+    const [gameEnded, setGameEnded] = useState(false)
+    const [winner, setWinner] = useState({})
     const [gameState, setGameState] = useState(false)
 
     //document.addEventListener('keydown', logKey);
@@ -151,12 +154,14 @@ const SnapContainer = () => {
             givePlayer1FinalScore()
             setScore2(0)
             givePlayer2FinalScore()
+            setGameEnded(true)
             setGameState(false)
         }
         if (hand2.length === 52){
             givePlayer2FinalScore()
             setScore1(0)
             givePlayer1FinalScore()
+            setGameEnded(true)
             setGameState(false)
         }
     }
@@ -258,7 +263,7 @@ const SnapContainer = () => {
                 </div>
             </div>
             <div class="snappool">
-                <SnapPool pool={pool} gameState={gameState}/>
+            {gameEnded ? <EndGame score1={score1} score2={score2} selectedPlayer1={selectedPlayer1} selectedPlayer2={selectedPlayer2} winner={winner} setWinner={setWinner} setGameEnded={setGameEnded} setGameState={setGameState}/> : <SnapPool pool={pool} gameState={gameState}/>}
             </div>
             <div class="p2hand">
                 <div class="handcount">
