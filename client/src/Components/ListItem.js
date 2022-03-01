@@ -6,9 +6,12 @@ const ListItem = ({highScore, deleteHighScore, index}) => {
 
     return (
         <div className='individual-player'>
-            {index + 1}:  {highScore.name} {highScore.score} <button onClick={()=>deleteHighScore(highScore._id)}><GiSkullCrossedBones/></button>
+            {index + 1}:  {highScore.name}&nbsp;{highScore.score}&nbsp;&nbsp;     
         </div>
     )
 }
 // 🗑
 export default ListItem;
+
+
+{/* <button onClick={()=>deleteHighScore(highScore._id)}><GiSkullCrossedBones/></button> */}

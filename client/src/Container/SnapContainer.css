@@ -12,6 +12,7 @@
     background-repeat: no-repeat;
     padding: 10px;
     text-align: center;
+    margin-bottom: 0px;
 }
 
 .instructions {
@@ -84,3 +85,26 @@
     font-family: neon;
     font-size: 240px;
 }
+
+.footer{
+    font-family: neon;
+    src: url(neon_pixel-7.ttf);
+    font-size: 20px;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color:black;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    text-shadow:
+      0 0 4px #fff,
+      0 0 10px #fff,
+      0 0 18px #fff,
+      0 0 38px #f09,
+      0 0 73px #f09,
+      0 0 80px #f09,
+      0 0 94px #f09,
+      0 0 140px #f09;
+  }

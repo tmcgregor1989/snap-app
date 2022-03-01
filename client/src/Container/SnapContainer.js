@@ -233,6 +233,7 @@ const SnapContainer = () => {
     }
 
     return(
+        <>
         <div class="container">
             <div class="playerform">
                 <NameForm1 postHighScore={postHighScore} setPlayer1Name={setPlayer1Name} player1name={player1name}/>
@@ -271,9 +272,14 @@ const SnapContainer = () => {
                 </div>
             </div>
             <Player1Info selectedPlayer1={selectedPlayer1} score1={score1}/>
-            <HighScoreList highScores={highScores} deleteHighScore={deleteHighScore} />
+            <>&nbsp;</>
             <Player2Info selectedPlayer2={selectedPlayer2} score2={score2}/>
         </div>
+    
+        <div className="footer">
+        <HighScoreList highScores={highScores} deleteHighScore={deleteHighScore} />
+        </div>
+        </>
         )
 }
 
