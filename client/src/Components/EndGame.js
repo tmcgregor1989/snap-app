@@ -22,7 +22,7 @@ const EndGame = ({score1, score2, selectedPlayer1, selectedPlayer2, winner, setW
         <div className="gameover-screen">
         <h3>Game Over</h3>
         <p>{winner.name} wins!!!</p>
-        <button onClick={handleClick}>End Game</button>
+        <button onClick={handleClick}>Rematch?</button>
         </div>
 
     )
