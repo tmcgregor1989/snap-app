@@ -7,10 +7,12 @@ import { postHighScore as dbpostHighScore } from "../HighScoreService";
 import NameForm1 from "../Components/NameForm";
 import { getHighScores as dbGetHighScores, deleteHighScore as dbDeleteHighScore, updateHighScore } from "../HighScoreService";
 import Instructions from "../Components/Instructions";
+import Controls from "../Components/Controls";
 import Player1Info from "../Components/Player1Info";
 import Player2Info from "../Components/Player2Info";
 import snapPool from "../Components/SnapPool";
 import PlayerSelector from "../Components/PlayerSelect";
+import './SnapContainer.css';
 
 
 const SnapContainer = () => {
@@ -20,6 +22,7 @@ const SnapContainer = () => {
     const [hand2, setHand2] = useState([]);
     const [highScores, setHighScores] = useState([]);
     const [isShown, setIsShown] = useState(false);
+    const [isShown2, setIsShown2] = useState(false);
     const [score1, setScore1] = useState(0);
     const [score2, setScore2] = useState(0);
     const [player1name, setPlayer1Name] = useState("");
@@ -213,36 +216,45 @@ const SnapContainer = () => {
     }
 
     return(
-        <div id="container">
-            <div>
-            <input type="text" onKeyPress={(e) => handleKeyPress(e)} />
+        <div class="container">
+            <div class="playerform">
+            <NameForm1 postHighScore={postHighScore} setPlayer1Name={setPlayer1Name} player1name={player1name}/>
+            <PlayerSelector highScores={highScores} setSelectedPlayer1={setSelectedPlayer1} setSelectedPlayer2={setSelectedPlayer2}/>
+            <button type="text" onKeyPress={(e) => handleKeyPress(e)} onClick={dealPool}>Start Game</button>
             </div>
+            <div class="title">
+                SNAP
+            </div>
+            <div class="instructions">
             <button
             onMouseEnter={() => setIsShown(true)}
             onMouseLeave={() => setIsShown(false)}>
-            Instructions (Hover over me)
+            Instructions
+            </button>
+            <button 
+            onMouseEnter={() => setIsShown2(true)}
+            onMouseLeave={() => setIsShown2(false)}>
+            Controls
             </button>
             {isShown && (
-            <div>
+            <div class="ipopup">
             <Instructions/>
             </div>
             )}
-
-            <button onClick={dealPool}>Deal</button>
-            <button onClick={playCard1}>Play card 1</button>
-            <button onClick={givePlayer1FinalScore}>Player 1 score test button</button>
-            <button onClick={givePlayer2FinalScore}>Player 2 score test button</button>
-
-            <NameForm1 postHighScore={postHighScore} setPlayer1Name={setPlayer1Name} player1name={player1name}/>
-        
-
+            {isShown2 && (
+            <div class="cpopup">
+            <Controls/>
+            </div>
+            )}
+            </div>         
             <Player1Hand hand1={hand1}/>
-            <Player2Hand hand2={hand2}/>
-            <PlayerSelector highScores={highScores} setSelectedPlayer1={setSelectedPlayer1} setSelectedPlayer2={setSelectedPlayer2}/>
-            <Player1Info selectedPlayer1={selectedPlayer1} score1={score1}/>
-            <Player2Info selectedPlayer2={selectedPlayer2} score2={score2}/>
+            <div class="snappool">
             <SnapPool pool={pool}/>
+            </div>
+            <Player2Hand hand2={hand2}/>
+            <Player1Info selectedPlayer1={selectedPlayer1} score1={score1}/>
             <HighScoreList highScores={highScores} deleteHighScore={deleteHighScore} />
+            <Player2Info selectedPlayer2={selectedPlayer2} score2={score2}/>
         </div>
         )
 }

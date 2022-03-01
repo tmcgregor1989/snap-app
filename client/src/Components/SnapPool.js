@@ -1,10 +1,6 @@
-// ALL GAME MECHANICS HERE
-
-// 3 arrays that are [Player1Hand], [Player2Hand], [SnapPool]
-
-
 import React from "react";
 import Card from "./Card";
+import './SnapPool.css';
 
 const SnapPool =({pool}) =>{
 
@@ -16,21 +12,15 @@ const SnapPool =({pool}) =>{
         });
 
     return(
-        <div>
-                    Snap Pool:{pool.length} 
-                    {snapPool[snapPool.length-1]} 
-                    {snapPool[snapPool.length-2]}
+        <div class="snappool">
+            <div class="count">Snap Pool:{pool.length} </div>
+            <div class="top">{snapPool[snapPool.length-1]} </div>
+            <div class="bottom">{snapPool[snapPool.length-2]}</div>
         </div>
     )
     };
 export default SnapPool;
 
-// const poolList = pool.map((card, index) => { 
-//     return <Card 
-//     card={card} 
-//     key={index} 
-//     index={index}/>
-// });
 
 
 

@@ -1,0 +1,31 @@
+.container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    /* grid-template-rows: 10% 70% 20%; */
+    background-image: "./felt.jpeg";
+    background-color: seagreen;
+    padding: 10px;
+    text-align: center;
+}
+
+.instructions {
+    text-align: right;
+}
+
+.playerform {
+    text-align: left;
+}
+
+.snappool {
+    display: grid;
+    grid-template-areas: 'header header'
+    'left right';
+}
+
+.ipopup {
+    text-align: left;
+}
+
+.cpopup {
+    text-align: left;
+}
