@@ -10,7 +10,7 @@ const Player1Hand = ({hand1}) => {
     return(
         <div>
             <h1>
-                {hand1.length} cards left
+                {hand1.length}
             </h1>
         </div>
     )

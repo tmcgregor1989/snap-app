@@ -41,11 +41,15 @@ const SnapContainer = () => {
         getPool();
     }, [])
 
-
-
     useEffect(() => {
         getHighScores();
     }, [])
+
+    useEffect(() => {
+        const interval = setInterval (() => {
+            gameEnd()
+        }, 1000)
+    })
 
 
     const getPool = function(){
@@ -55,13 +59,14 @@ const SnapContainer = () => {
     }
 
     const dealPool = function(){
+        if (gameState === false){
         let newPool = []
         let newHand1 = pool.slice(0, 26)
         let newHand2 = pool.slice(26, 52)
         setPool(newPool)
         setHand1(newHand1)
         setHand2(newHand2)
-        setGameState(true)
+        setGameState(true)}
 
     }
 
@@ -150,19 +155,21 @@ const SnapContainer = () => {
 
 
     const gameEnd = function (){
-        if (hand1.length === 52){
+        if ((hand1.length === 52)){
             givePlayer1FinalScore()
             setScore2(0)
             givePlayer2FinalScore()
             setGameEnded(true)
             setGameState(false)
+            setHand1([])
         }
-        if (hand2.length === 52){
+        if ((hand2.length === 52)){
             givePlayer2FinalScore()
             setScore1(0)
             givePlayer1FinalScore()
             setGameEnded(true)
             setGameState(false)
+            setHand2([])
         }
     }
 
@@ -210,7 +217,6 @@ const SnapContainer = () => {
                 let newHand2 = hand2.concat(pool)
                 setHand2(newHand2)
                 setPool([])
-                gameEnd()
                 setTurn(2)
             }
             else {
@@ -228,7 +234,6 @@ const SnapContainer = () => {
             let newHand2 = hand2.concat(pool)
             setHand2(newHand2)
             setPool([])
-            gameEnd()
         }
     }
 

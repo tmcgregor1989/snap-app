@@ -27,6 +27,7 @@ const NameForm1 = ({postHighScore, setPlayer1Name, player1name}) =>{
 
 
             <input type="submit" value="Add" id="Start"/>
+            <input type="reset"/>
 
         </form>
         </div>
