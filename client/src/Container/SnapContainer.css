@@ -2,14 +2,8 @@
     display: grid;
     grid-template-columns: 33% 33% 33%;
     background-size: cover;
-    /* background-image: url("../Components/images/felt.jpeg"); */
     background-image: url("../Components/images/felt4suits.webp");
-    /* background-image: url("../Components/images/feltlowres.jpeg"); */
-    /* background-image: url("../Components/images/feltsuitpattern.jpeg"); */
-    /* background-image: url("../Components/images/table2.webp"); */
-    /* background-image: url("../Components/images/table3.webp"); */
-    /* background-color:rgb(1, 46, 1); */
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     padding: 10px;
     text-align: center;
     margin-bottom: 0px;
@@ -45,8 +39,6 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
-    height: 314px;
-    width: 226px;
     padding-top: 23%;
     text-shadow: 0 0 10px white;
     color: black;
@@ -64,8 +56,6 @@
     background-repeat: no-repeat;
     background-position: center center;
     padding-top: 23%;
-    height: 314px;
-    width: 226px;
     color: black;
 }
 
@@ -91,6 +81,7 @@
     padding: 3%;
     font-family: neon;
     font-size: 240px;
+    animation: flicker 5s linear infinite;
 }
 
 .footer{
@@ -104,40 +95,27 @@
     padding-top: 0;
     padding-left: 0;
     background-color:black;
-    position: bottom;
+    position: sticky;
     bottom: 0;
     left: 0;
     width: 100%;
-    color: white;
+    color: rgb(255, 255, 255);
+    /* color: rgb(2, 2, 2); */
     text-shadow:
-      0 0 4px #fff,
-      0 0 10px #fff,
-      0 0 18px #fff,
-      0 0 38px #f09,
-      0 0 50px #f09,
-      0 0 50px #f09,
-      0 0 50px #f09,
-      0 0 50px #f09;
+      /* 0 0 4px #fff, */
+      /* 0 0 8px #fff, */
+      /* 0 0 11px #fff, */
+      0 0 13px #f09,
+      0 0 17px #f09,
+      0 0 20px #f09,
+      0 0 22px #f09,
+      0 0 30px #f09;
   }
 
-/* .flicker-slow{
-    animation: flicker 3s linear infinite;
-  }
-  
-  .flicker-fast{
-    animation: flicker 1s linear infinite;
-  }
-  
-  @keyframes flicker {
-      0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
-          //text-shadow: none;
-      opacity: .99;
-          
-      }
-      20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
-          opacity: 0.4;
-      }
-  } */
+@keyframes flicker {
+    0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {opacity: .99;}
+    20%, 21.999%, 63%, 63.999%, 65%, 69.999% {opacity: 0.4;}
+}
 
 .container button {
     background-color: #f09;
@@ -151,6 +129,5 @@
 }
 
 .container button:hover {
-    /* background-color: rgb(47, 255, 0); */
     opacity: 1;
 }  

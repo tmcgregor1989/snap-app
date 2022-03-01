@@ -43,11 +43,15 @@ const SnapContainer = () => {
         getPool();
     }, [])
 
-
-
     useEffect(() => {
         getHighScores();
     }, [])
+
+    useEffect(() => {
+        const interval = setInterval (() => {
+            gameEnd()
+        }, 1000)
+    })
 
 
     const getPool = function(){
@@ -57,22 +61,16 @@ const SnapContainer = () => {
     }
 
     const dealPool = function(){
+        if (gameState === false){
         let newPool = []
         let newHand1 = pool.slice(0, 26)
         let newHand2 = pool.slice(26, 52)
         setPool(newPool)
         setHand1(newHand1)
         setHand2(newHand2)
-        setGameState(true)
+        setGameState(true)}
 
     }
-
-    // function logKey(a) {
-    //     hand1.shift()
-    //     setHand1(hand1)
-    //     console.log(hand1)
-
-    // }
 
     const playCard1 = function(){
     if (hand1.length > 0){
@@ -152,19 +150,21 @@ const SnapContainer = () => {
 
 
     const gameEnd = function (){
-        if (hand1.length === 52){
+        if ((hand1.length === 52)){
             givePlayer1FinalScore()
             setScore2(0)
             givePlayer2FinalScore()
             setGameEnded(true)
             setGameState(false)
+            setHand1([])
         }
-        if (hand2.length === 52){
+        if ((hand2.length === 52)){
             givePlayer2FinalScore()
             setScore1(0)
             givePlayer1FinalScore()
             setGameEnded(true)
             setGameState(false)
+            setHand2([])
         }
     }
 
@@ -233,7 +233,6 @@ const SnapContainer = () => {
             let newHand2 = hand2.concat(pool)
             setHand2(newHand2)
             setPool([])
-            gameEnd()
         }
     }
 
@@ -246,7 +245,13 @@ const SnapContainer = () => {
                 <button type="text" onKeyPress={(e) => handleKeyPress(e)} onClick={dealPool} theme="pink">Start Game <GiAce/></button>
             </div>
             <div class="title">
-                <h1><u></u><div class="neon-wrapper"><div class="neon-text">SNAP</div></div></h1>
+                <h1><u></u><div class="neon-text">SNAP
+                    {/* <span class="flicker-1">S</span>
+                    <span class="flicker-2">N</span>
+                    <span class="flicker-3">A</span>
+                    <span class="flicker-4">P</span> */}
+                    </div>
+                    </h1>
             </div>
             <div className="delete">
                 <DeletePlayer highScores={highScores} deleteHighScore={deleteHighScore} playerToDelete={playerToDelete} setPlayerToDelete={setPlayerToDelete}/>
