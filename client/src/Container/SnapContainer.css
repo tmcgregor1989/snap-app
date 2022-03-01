@@ -39,11 +39,9 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
-    height: 314px;
-    width: 226px;
     padding-top: 23%;
     text-shadow: 0 0 10px white;
-    color: #000;
+    color: black;
 }
 
 .handcount{
@@ -58,9 +56,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     padding-top: 23%;
-    height: 314px;
-    width: 226px;
-    color: #000;
+    color: black;
 }
 
 .title{
