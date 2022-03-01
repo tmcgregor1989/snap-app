@@ -14,6 +14,7 @@ import PlayerSelector from "../Components/PlayerSelect";
 import './SnapContainer.css';
 import EndGame from "../Components/EndGame";
 import { GiAce } from "react-icons/gi";
+import DeletePlayer from "../Components/DeletePlayer";
 
 
 const SnapContainer = () => {
@@ -34,6 +35,7 @@ const SnapContainer = () => {
     const [gameEnded, setGameEnded] = useState(false)
     const [winner, setWinner] = useState({})
     const [gameState, setGameState] = useState(false)
+    const [playerToDelete, setPlayerToDelete] = useState({})
 
     //document.addEventListener('keydown', logKey);
 
@@ -176,7 +178,8 @@ const SnapContainer = () => {
                 let newPool = [...pool, card]
                 setHand1(hand1)
                 setPool(newPool)
-                setTurn(2)
+                if (hand2.length > 0){
+                    setTurn(2)}
             }
         }
         if (key === "l") {
@@ -185,7 +188,8 @@ const SnapContainer = () => {
                 let newPool = [...pool, card]
                 setHand2(hand2)
                 setPool(newPool)
-                setTurn(1)
+                if (hand1.length > 0){
+                    setTurn(1)}
             }
         }
         if (key === "d") {
@@ -196,6 +200,7 @@ const SnapContainer = () => {
                 setHand1(newHand1)
                 setPool([])
                 setTurn(1)
+                gameEnd()
             }
             else {
                 let newScore = (score1 - 5)
@@ -210,8 +215,8 @@ const SnapContainer = () => {
                 let newHand2 = hand2.concat(pool)
                 setHand2(newHand2)
                 setPool([])
-                gameEnd()
                 setTurn(2)
+                gameEnd()
             }
             else {
                 let newScore2 = (score2 - 5)
@@ -242,6 +247,9 @@ const SnapContainer = () => {
             </div>
             <div class="title">
                 <h1><u></u><div class="neon-wrapper"><div class="neon-text">SNAP</div></div></h1>
+            </div>
+            <div className="delete">
+                <DeletePlayer highScores={highScores} deleteHighScore={deleteHighScore} playerToDelete={playerToDelete} setPlayerToDelete={setPlayerToDelete}/>
             </div>
             <div class="instructions">
                 <button onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>Instructions</button>
