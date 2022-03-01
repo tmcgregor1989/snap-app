@@ -25,6 +25,7 @@ const SnapContainer = () => {
     const [highScores, setHighScores] = useState([]);
     const [isShown, setIsShown] = useState(false);
     const [isShown2, setIsShown2] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
     const [score1, setScore1] = useState(0);
     const [score2, setScore2] = useState(0);
     const [player1name, setPlayer1Name] = useState("");
@@ -36,8 +37,6 @@ const SnapContainer = () => {
     const [winner, setWinner] = useState({})
     const [gameState, setGameState] = useState(false)
     const [playerToDelete, setPlayerToDelete] = useState({})
-
-    //document.addEventListener('keydown', logKey);
 
     useEffect(() => {
         getPool();
@@ -169,7 +168,6 @@ const SnapContainer = () => {
     }
 
     
-    const [highlight, setHighlight] = useState("2px solid black");
     function handleKeyPress(e) {
         var key = e.key;
         if (key === "a") {
@@ -234,34 +232,45 @@ const SnapContainer = () => {
             setHand2(newHand2)
             setPool([])
         }
+
+        if (key === "1"){ //enter admin mode - tied to start game button
+            if (isAdmin === false){
+                setIsAdmin(true)
+            }
+            else {
+                setIsAdmin(false)
+            }
+        }
     }
+
 
     return(
         <>
         <div class="container">
             <div class="playerform">
+            {isAdmin && (
+                <div class="admin">
+                    <DeletePlayer highScores={highScores} deleteHighScore={deleteHighScore} playerToDelete={playerToDelete} setPlayerToDelete={setPlayerToDelete}/>
+                </div>
+                )}
                 <NameForm1 postHighScore={postHighScore} setPlayer1Name={setPlayer1Name} player1name={player1name}/>
                 <PlayerSelector highScores={highScores} setSelectedPlayer1={setSelectedPlayer1} setSelectedPlayer2={setSelectedPlayer2}/>
                 <button type="text" onKeyPress={(e) => handleKeyPress(e)} onClick={dealPool} theme="pink">Start Game <GiAce/></button>
             </div>
             <div class="title">
                 <h1><u></u><div class="neon-text">SNAP
-                    {/* <span class="flicker-1">S</span>
-                    <span class="flicker-2">N</span>
-                    <span class="flicker-3">A</span>
-                    <span class="flicker-4">P</span> */}
                     </div>
                     </h1>
             </div>
-            <div className="delete">
+            {/* <div className="delete">
                 <DeletePlayer highScores={highScores} deleteHighScore={deleteHighScore} playerToDelete={playerToDelete} setPlayerToDelete={setPlayerToDelete}/>
-            </div>
+            </div> */}
             <div class="instructions">
                 <button onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>Instructions</button>
                 <button onMouseEnter={() => setIsShown2(true)} onMouseLeave={() => setIsShown2(false)}>Controls</button>
                 {isShown && (
                 <div class="ipopup">
-                <Instructions/>
+                    <Instructions/>
                 </div>
                 )}
                 {isShown2 && (
