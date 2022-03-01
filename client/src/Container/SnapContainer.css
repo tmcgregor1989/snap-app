@@ -1,14 +1,14 @@
 .container {
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    background-size: 100%;
+    background-size: cover;
     /* background-image: url("../Components/images/felt.jpeg"); */
     background-image: url("../Components/images/felt4suits.webp");
     /* background-image: url("../Components/images/feltlowres.jpeg"); */
     /* background-image: url("../Components/images/feltsuitpattern.jpeg"); */
     /* background-image: url("../Components/images/table2.webp"); */
     /* background-image: url("../Components/images/table3.webp"); */
-    background-color: seagreen;
+    /* background-color:rgb(1, 46, 1); */
     background-repeat: no-repeat;
     padding: 10px;
     text-align: center;
@@ -90,10 +90,14 @@
     font-family: neon;
     src: url(neon_pixel-7.ttf);
     font-size: 20px;
-    margin-top: 1rem;
+    margin-top: 0;
+    margin: 0;
+    height: 50px;
     padding: 1rem;
+    padding-top: 0;
+    padding-left: 0;
     background-color:black;
-    position: sticky;
+    position: bottom;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -103,8 +107,8 @@
       0 0 10px #fff,
       0 0 18px #fff,
       0 0 38px #f09,
-      0 0 73px #f09,
-      0 0 80px #f09,
-      0 0 94px #f09,
-      0 0 140px #f09;
+      0 0 50px #f09,
+      0 0 50px #f09,
+      0 0 50px #f09,
+      0 0 50px #f09;
   }

@@ -14,7 +14,7 @@ const HighScoreList = ({highScores, deleteHighScore, descendingHighScores, getDe
 
     return (
         <div className='highScoreBoard'>
-            <marquee><h3>High Scores: {highScoreListItem}</h3></marquee>
+            <marquee scrolldelay="60" hspace="0"><h3>High Scores: {highScoreListItem}</h3></marquee>
     
         </div>
     )
