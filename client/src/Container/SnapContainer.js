@@ -29,7 +29,8 @@ const SnapContainer = () => {
     const [player2name, setPlayer2Name] = useState("");
     const [selectedPlayer1, setSelectedPlayer1] = useState({});
     const [selectedPlayer2, setSelectedPlayer2] = useState({});
-    const [turn, setTurn] = useState(1)
+    const [turn, setTurn] = useState(1);
+    const [gameState, setGameState] = useState("pre-game")
 
     //document.addEventListener('keydown', logKey);
 
@@ -57,6 +58,8 @@ const SnapContainer = () => {
         setPool(newPool)
         setHand1(newHand1)
         setHand2(newHand2)
+        setGameState("game-started")
+
     }
 
     // function logKey(a) {
@@ -148,11 +151,13 @@ const SnapContainer = () => {
             givePlayer1FinalScore()
             setScore2(0)
             givePlayer2FinalScore()
+            setGameState("game-ended")
         }
         if (hand2.length === 52){
             givePlayer2FinalScore()
             setScore1(0)
             givePlayer1FinalScore()
+            setGameState("game-ended")
         }
     }
 
