@@ -3,7 +3,7 @@
     grid-template-columns: 33% 33% 33%;
     background-size: 100%;
     /* background-image: url("../Components/images/felt.jpeg"); */
-    /* background-image: url("../Components/images/felt4suits.webp"); */
+    background-image: url("../Components/images/felt4suits.webp");
     /* background-image: url("../Components/images/feltlowres.jpeg"); */
     /* background-image: url("../Components/images/feltsuitpattern.jpeg"); */
     /* background-image: url("../Components/images/table2.webp"); */
@@ -40,13 +40,16 @@
     background-image: url("../Components/images/redcardback.png");
     background-size: contain;
         /* need to work on sizing of this compared to snap pool */
-    /* heialllght: 100%; */
     background-repeat: no-repeat;
     background-position: center center;
     padding-top: 23%;
-    text-shadow: 2px 2px blue;
+    text-shadow: 0 0 10px white;
+}
 
-    /* padding-right: 6%; */
+.handcount{
+    background: rgba(255, 255, 255, 0.75);
+    width: 36%;
+    margin-left: 32%;
 }
 
 .p2hand{
@@ -56,24 +59,11 @@
     background-repeat: no-repeat;
     background-position: center center;
     padding-top: 23%;
-    text-shadow: 2px 2px red;
-    /* padding-right: 6%; */
 }
 
 .title{
-    color: #fff;
-    /* font-family: "Vibur", sans-serif; */
+    color: white;
     text-shadow:
-      /* 0 0 7px #fff,
-      0 0 10px #fff,
-      0 0 21px #fff,
-      0 0 42px #0fa,
-      0 0 82px #0fa,
-      0 0 92px #0fa,
-      0 0 102px #0fa,
-      0 0 151px #0fa; */
-
-
       0 0 4px #fff,
       0 0 10px #fff,
       0 0 18px #fff,
@@ -83,3 +73,35 @@
       0 0 94px #f09,
       0 0 140px #f09;
 }
+
+@font-face {
+    font-family: neon;
+    src: url(neon_pixel-7.ttf)
+}
+
+.neon-text{
+    padding: 3%;
+    font-family: neon;
+    font-size: 240px;
+}
+
+/* .neon-wrapper{
+    box-shadow: 
+    0 0 4px #fff,
+    0 0 10px #fff,
+    0 0 18px #fff,
+    0 0 38px #f09,
+    0 0 73px #f09,
+    0 0 80px #f09,
+    0 0 94px #f09,
+    0 0 140px #f09,
+    inset 0 0 2px #fff,
+    inset 0 0 3px #fff,
+    inset 0 0 7px #fff,
+    inset 0 0 10px #f09,
+    inset 0 0 14px #f09,
+    inset 0 0 40px #f09,
+    inset 0 0 53px #f09,
+    inset 0 0 60px #f09;
+    border-radius: 8%;
+} */
