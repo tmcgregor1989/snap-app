@@ -77,10 +77,10 @@ const SnapContainer = () => {
           .then(savedHighScore => setHighScores([ ...highScores, savedHighScore ]))
       };
 
-    const postHighScore2 = newHighScore => {
-        dbpostHighScore(newHighScore)
-          .then(savedHighScore => setHighScores([ ...highScores, savedHighScore ]))
-      };
+    // const postHighScore2 = newHighScore => {
+    //     dbpostHighScore(newHighScore)
+    //       .then(savedHighScore => setHighScores([ ...highScores, savedHighScore ]))
+    //   };
 
    
       
@@ -125,6 +125,7 @@ const SnapContainer = () => {
     }
 
     const givePlayer2FinalScore = () => {
+        console.log(selectedPlayer2.score);
         updatePlayerScore({
             _id: selectedPlayer2._id,
             name: selectedPlayer2.name,
@@ -138,10 +139,10 @@ const SnapContainer = () => {
         if (hand1.length === 52){
             givePlayer1FinalScore()
             setScore2(0)
-            // givePlayer2FinalScore()
+            givePlayer2FinalScore()
         }
         if (hand2.length === 52){
-            // givePlayer2FinalScore()
+            givePlayer2FinalScore()
             setScore1(0)
             givePlayer1FinalScore()
         }
@@ -228,7 +229,7 @@ const SnapContainer = () => {
             <button onClick={givePlayer1FinalScore}>Player 1 score test button</button>
             <button onClick={givePlayer2FinalScore}>Player 2 score test button</button>
 
-            <NameForm1 postHighScore={postHighScore} postHighScore2={postHighScore2} setPlayer1Name={setPlayer1Name} setPlayer2Name={setPlayer2Name} player1name={player1name} player2name={player2name} setSelectedPlayer1={setSelectedPlayer1} setSelectedPlayer2={setSelectedPlayer2} selectedPlayer1={selectedPlayer1} selectedPlayer2={selectedPlayer2}/>
+            <NameForm1 postHighScore={postHighScore} setPlayer1Name={setPlayer1Name} player1name={player1name}/>
         
 
             <Player1Hand hand1={hand1}/>
