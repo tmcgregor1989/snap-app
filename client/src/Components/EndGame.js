@@ -19,6 +19,7 @@ const EndGame = ({score1, score2, selectedPlayer1, selectedPlayer2, winner, setW
             replayGame()
         }
 
+
         const handleClick = ()=>{
             window.location.reload();
          }
@@ -27,7 +28,6 @@ const EndGame = ({score1, score2, selectedPlayer1, selectedPlayer2, winner, setW
 
 
     return (
-
         <div className="gameover-screen">
         <h2>Game Over</h2>
         <h3>{winner.name} wins!!!</h3>
@@ -37,7 +37,6 @@ const EndGame = ({score1, score2, selectedPlayer1, selectedPlayer2, winner, setW
         <button onClick={handleClick}>End Game</button>
         <button onClick={handleClick2}>Play Again</button>
         </div>
-
     )
 }
 
