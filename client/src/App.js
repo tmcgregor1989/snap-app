@@ -1,5 +1,5 @@
 import './App.css';
-import SnapContainer from "./SnapContainer";
+import SnapContainer from "./Container/SnapContainer";
 
 
 function App() {
@@ -7,7 +7,6 @@ function App() {
     <div>
       <SnapContainer/>
     </div>
-    
   );
 }
 
