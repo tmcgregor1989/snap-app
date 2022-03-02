@@ -19,9 +19,10 @@
 
 .snappool {
     height: 314px;
-    /* align-items: center; */
+    /* align-items:center; */
+    /* align-content: space-around; */
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto ;
 }
 
 .ipopup {
