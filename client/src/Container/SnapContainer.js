@@ -169,6 +169,19 @@ const SnapContainer = () => {
         }
     }
 
+    const replayGame = () => {
+        setGameEnded(false)
+        setScore1(0)
+        setScore2(0)
+        getPool()
+        dealPool()
+        
+
+
+    }
+
+    
+
     
     function handleKeyPress(e) {
         var key = e.key;
@@ -194,7 +207,7 @@ const SnapContainer = () => {
         }
         if (key === "d") {
             if ((pool[pool.length-1].value === pool[pool.length-2].value) || (pool[pool.length-1].value === pool[pool.length-3].value)){
-                let newScore1 = (score1 + pool.length)
+                let newScore1 = (score1 + (pool.length * 100))
                 setScore1(newScore1)
                 let newHand1 = hand1.concat(pool)
                 setHand1(newHand1)
@@ -210,7 +223,7 @@ const SnapContainer = () => {
         }
         if (key === "j") {
             if ((pool[pool.length-1].value === pool[pool.length-2].value) || (pool[pool.length-1].value === pool[pool.length-3].value)){
-                let newScore2 = (score2 + pool.length)
+                let newScore2 = (score2 + (pool.length * 100))
                 setScore2(newScore2)
                 let newHand2 = hand2.concat(pool)
                 setHand2(newHand2)
@@ -228,7 +241,7 @@ const SnapContainer = () => {
             dealPool()
         }
         if (key === "p"){ //player 2 cheat button to scoop up all of pool
-            let newScore2 = (score2 + pool.length)
+            let newScore2 = (score2 + (pool.length * 100))
             setScore2(newScore2)
             let newHand2 = hand2.concat(pool)
             setHand2(newHand2)
@@ -287,7 +300,7 @@ const SnapContainer = () => {
                 </div>
             </div>
             <div className="snappool">
-                {gameEnded ? <EndGame score1={score1} score2={score2} selectedPlayer1={selectedPlayer1} selectedPlayer2={selectedPlayer2} winner={winner} setWinner={setWinner} setGameEnded={setGameEnded} setGameState={setGameState}/> : <SnapPool pool={pool} gameState={gameState}/>}
+                {gameEnded ? <EndGame score1={score1} score2={score2} selectedPlayer1={selectedPlayer1} selectedPlayer2={selectedPlayer2} winner={winner} setWinner={setWinner} setGameEnded={setGameEnded} setGameState={setGameState} replayGame={replayGame}/> : <SnapPool pool={pool} gameState={gameState}/>}
             </div>
             <div className="p2hand">
                 <div className="handcount">
