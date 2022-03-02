@@ -68,17 +68,19 @@ const SnapContainer = () => {
         setHand1(newHand1)
         setHand2(newHand2)
         setGameState(true)}
-
+        // let audio = new Audio("https://interactive-examples.mdn.mozilla.net/media/examples/t-rex-roar.mp3")
+        // let audio = new Audio("./sounds/shuffle2.mp3")
+        // audio.play()
     }
 
-    const playCard1 = function(){
-    if (hand1.length > 0){
-        let card = hand1.pop()
-        let newPool = [...pool, card]
-        setHand1(hand1)
-        setPool(newPool)
-        }
-    }
+    // const playCard1 = function(){
+    // if (hand1.length > 0){
+    //     let card = hand1.pop()
+    //     let newPool = [...pool, card]
+    //     setHand1(hand1)
+    //     setPool(newPool)
+    //     }
+    // }
 
 
     const postHighScore = newHighScore => {
@@ -246,49 +248,49 @@ const SnapContainer = () => {
 
     return(
         <>
-        <div class="container">
-            <div class="playerform">
+        <div className="container">
+            <div className="playerform">
             {isAdmin && (
-                <div class="admin">
+                <div className="admin">
                     <DeletePlayer highScores={highScores} deleteHighScore={deleteHighScore} playerToDelete={playerToDelete} setPlayerToDelete={setPlayerToDelete}/>
                 </div>
                 )}
                 <NameForm1 postHighScore={postHighScore} setPlayer1Name={setPlayer1Name} player1name={player1name}/>
                 <PlayerSelector highScores={highScores} setSelectedPlayer1={setSelectedPlayer1} setSelectedPlayer2={setSelectedPlayer2}/>
-                <button type="text" onKeyPress={(e) => handleKeyPress(e)} onClick={dealPool} theme="pink">Start Game <GiAce/></button>
+                <button type="text" onKeyPress={(e) => handleKeyPress(e)} onClick={dealPool}>Start Game <GiAce/></button>
             </div>
-            <div class="title">
-                <h1><u></u><div class="neon-text">SNAP
+            <div className="title">
+                <h1><u></u><div className="neon-text">SNAP
                     </div>
                     </h1>
             </div>
             {/* <div className="delete">
                 <DeletePlayer highScores={highScores} deleteHighScore={deleteHighScore} playerToDelete={playerToDelete} setPlayerToDelete={setPlayerToDelete}/>
             </div> */}
-            <div class="instructions">
+            <div className="instructions">
                 <button onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>Instructions</button>
                 <button onMouseEnter={() => setIsShown2(true)} onMouseLeave={() => setIsShown2(false)}>Controls</button>
                 {isShown && (
-                <div class="ipopup">
+                <div className="ipopup">
                     <Instructions/>
                 </div>
                 )}
                 {isShown2 && (
-                <div class="cpopup">
+                <div className="cpopup">
                     <Controls/>
                 </div>
                 )}
             </div>
-            <div class="p1hand">
-                <div class="handcount">
+            <div className="p1hand">
+                <div className="handcount">
                     <Player1Hand hand1={hand1}/>
                 </div>
             </div>
-            <div class="snappool">
+            <div className="snappool">
                 {gameEnded ? <EndGame score1={score1} score2={score2} selectedPlayer1={selectedPlayer1} selectedPlayer2={selectedPlayer2} winner={winner} setWinner={setWinner} setGameEnded={setGameEnded} setGameState={setGameState}/> : <SnapPool pool={pool} gameState={gameState}/>}
             </div>
-            <div class="p2hand">
-                <div class="handcount">
+            <div className="p2hand">
+                <div className="handcount">
                     <Player2Hand hand2={hand2}/>
                 </div>
             </div>
