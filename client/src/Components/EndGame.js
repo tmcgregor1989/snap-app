@@ -1,7 +1,10 @@
 import React from 'react';
+import './EndGame.css';
+import CountUp from 'react-countup';
 
 
-const EndGame = ({score1, score2, selectedPlayer1, selectedPlayer2, winner, setWinner, setGameEnded, setGameState}) => {
+
+const EndGame = ({score1, score2, selectedPlayer1, selectedPlayer2, winner, setWinner, setGameEnded, setGameState, replayGame}) => {
 
         
         let winner1 = selectedPlayer1
@@ -12,17 +15,27 @@ const EndGame = ({score1, score2, selectedPlayer1, selectedPlayer2, winner, setW
             setWinner(winner2)
         }
 
-        const handleClick = () =>{
-            setGameEnded(false)
+        const handleClick2 = () =>{
+            replayGame()
         }
+
+        const handleClick = ()=>{
+            window.location.reload();
+         }
+
+         
 
 
     return (
 
         <div className="gameover-screen">
-        <h3>Game Over</h3>
-        <p>{winner.name} wins!!!</p>
+        <h2>Game Over</h2>
+        <h3>Final Score:</h3>
+        <p>{selectedPlayer1.name}: <CountUp start={0} end={score1} duration={2.5} delay={0.5} /></p>
+        <p>{selectedPlayer2.name}: <CountUp start={0} end={score2} duration={2.5} delay={0.5} /></p>
+        <h3>{winner.name} wins!!!</h3>
         <button onClick={handleClick}>End Game</button>
+        <button onClick={handleClick2}>Play Again</button>
         </div>
 
     )

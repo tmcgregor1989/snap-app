@@ -168,6 +168,19 @@ const SnapContainer = () => {
         }
     }
 
+    const replayGame = () => {
+        setGameEnded(false)
+        setScore1(0)
+        setScore2(0)
+        getPool()
+        dealPool()
+        
+
+
+    }
+
+    
+
     
     const [highlight, setHighlight] = useState("2px solid black");
     function handleKeyPress(e) {
@@ -194,7 +207,7 @@ const SnapContainer = () => {
         }
         if (key === "d") {
             if ((pool[pool.length-1].value === pool[pool.length-2].value) || (pool[pool.length-1].value === pool[pool.length-3].value)){
-                let newScore1 = (score1 + pool.length)
+                let newScore1 = (score1 + (pool.length * 100))
                 setScore1(newScore1)
                 let newHand1 = hand1.concat(pool)
                 setHand1(newHand1)
@@ -210,7 +223,7 @@ const SnapContainer = () => {
         }
         if (key === "j") {
             if ((pool[pool.length-1].value === pool[pool.length-2].value) || (pool[pool.length-1].value === pool[pool.length-3].value)){
-                let newScore2 = (score2 + pool.length)
+                let newScore2 = (score2 + (pool.length * 100))
                 setScore2(newScore2)
                 let newHand2 = hand2.concat(pool)
                 setHand2(newHand2)
@@ -228,7 +241,7 @@ const SnapContainer = () => {
             dealPool()
         }
         if (key === "p"){ //player 2 cheat button to scoop up all of pool
-            let newScore2 = (score2 + pool.length)
+            let newScore2 = (score2 + (pool.length * 100))
             setScore2(newScore2)
             let newHand2 = hand2.concat(pool)
             setHand2(newHand2)
@@ -253,9 +266,9 @@ const SnapContainer = () => {
                     </div>
                     </h1>
             </div>
-            <div className="delete">
+            {/* <div className="delete">
                 <DeletePlayer highScores={highScores} deleteHighScore={deleteHighScore} playerToDelete={playerToDelete} setPlayerToDelete={setPlayerToDelete}/>
-            </div>
+            </div> */}
             <div class="instructions">
                 <button onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>Instructions</button>
                 <button onMouseEnter={() => setIsShown2(true)} onMouseLeave={() => setIsShown2(false)}>Controls</button>
@@ -276,7 +289,7 @@ const SnapContainer = () => {
                 </div>
             </div>
             <div class="snappool">
-                {gameEnded ? <EndGame score1={score1} score2={score2} selectedPlayer1={selectedPlayer1} selectedPlayer2={selectedPlayer2} winner={winner} setWinner={setWinner} setGameEnded={setGameEnded} setGameState={setGameState}/> : <SnapPool pool={pool} gameState={gameState}/>}
+                {gameEnded ? <EndGame score1={score1} score2={score2} selectedPlayer1={selectedPlayer1} selectedPlayer2={selectedPlayer2} winner={winner} setWinner={setWinner} setGameEnded={setGameEnded} setGameState={setGameState} replayGame={replayGame}/> : <SnapPool pool={pool} gameState={gameState}/>}
             </div>
             <div class="p2hand">
                 <div class="handcount">
