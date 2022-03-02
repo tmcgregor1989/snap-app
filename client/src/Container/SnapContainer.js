@@ -37,6 +37,14 @@ const SnapContainer = () => {
     const [winner, setWinner] = useState({})
     const [gameState, setGameState] = useState(false)
     const [playerToDelete, setPlayerToDelete] = useState({})
+    const [winningScore, setWinningScore] = useState(0)
+    const [testState, setTestState] = useState("")
+    const [minus, setMinus] = useState("")
+    const [minus2, setMinus2] = useState("")
+    const [addPoints, setAddPoints] = useState("")
+    const [addPoints2, setAddPoints2] = useState("")
+    const [snapper1, setSnapper1] = useState("")
+    const [snapper2, setSnapper2] = useState("")
 
     useEffect(() => {
         getPool();
@@ -101,8 +109,56 @@ const SnapContainer = () => {
         const updatedScores = [...highScores];
         updatedScores[updatedScoreIndex] = updatedScore;
         setHighScores(updatedScores);
+    
       }
-   
+    
+    const displayMinusScore = () => {
+        setMinus("-500 Points!!")
+        setTimeout(function(){
+            setMinus("");
+       }, 1000); 
+
+    }
+
+    const displayMinusScore2 = () => {
+        setMinus2("-500 Points!!")
+        setTimeout(function(){
+            setMinus2("");
+       }, 1000); 
+
+    }
+
+    const displayAddPoints = () => {
+        setAddPoints(`+ ${pool.length * 100} Points!!`)
+        setTimeout(function(){
+            setAddPoints("");
+       }, 1000); 
+
+    }
+
+    const displayAddPoints2 = () => {
+        setAddPoints2(`+ ${pool.length * 100} Points!!`)
+        setTimeout(function(){
+            setAddPoints2("");
+       }, 1000); 
+
+    }
+
+    const displaySnapper1 = () => {
+        setSnapper1(`${selectedPlayer1.name} Slapped That Jack!!!`)
+        setTimeout(function(){
+            setSnapper1("");
+       }, 1000); 
+
+    }
+    
+    const displaySnapper2 = () => {
+        setSnapper2(`${selectedPlayer2.name} Slapped That Jack!!!!`)
+        setTimeout(function(){
+            setSnapper2("");
+       }, 1000); 
+    }
+    
     //   function to be added to appropriate component in order to invoke updatePlayerScore function
     const givePlayer1FinalScore = () => {
         if (score1 > selectedPlayer1.score){
@@ -122,6 +178,8 @@ const SnapContainer = () => {
             score: score2
         })
     }}
+
+
 
 
     const gameEnd = function (){
@@ -183,6 +241,8 @@ const SnapContainer = () => {
             if ((pool[pool.length-1].value === pool[pool.length-2].value) || (pool[pool.length-1].value === pool[pool.length-3].value)){
                 let newScore1 = (score1 + (pool.length * 100))
                 setScore1(newScore1)
+                displayAddPoints()
+                displaySnapper1()
                 let newHand1 = hand1.concat(pool)
                 setHand1(newHand1)
                 setPool([])
@@ -190,7 +250,8 @@ const SnapContainer = () => {
                 gameEnd()
             }
             else {
-                let newScore = (score1 - 5)
+                let newScore = (score1 - 500)
+                displayMinusScore()
                 setScore1(newScore)
                 setTurn(2)
             }
@@ -198,6 +259,8 @@ const SnapContainer = () => {
         if (key === "j") {
             if ((pool[pool.length-1].value === pool[pool.length-2].value) || (pool[pool.length-1].value === pool[pool.length-3].value)){
                 let newScore2 = (score2 + (pool.length * 100))
+                displayAddPoints2()
+                displaySnapper2()
                 setScore2(newScore2)
                 let newHand2 = hand2.concat(pool)
                 setHand2(newHand2)
@@ -206,7 +269,8 @@ const SnapContainer = () => {
                 gameEnd()
             }
             else {
-                let newScore2 = (score2 - 5)
+                let newScore2 = (score2 - 500)
+                displayMinusScore2()
                 setScore2(newScore2)
                 setTurn(1)
             }
@@ -217,6 +281,8 @@ const SnapContainer = () => {
         if (key === "p"){ //player 2 cheat button to scoop up all of pool
             let newScore2 = (score2 + (pool.length * 100))
             setScore2(newScore2)
+            displayAddPoints2()
+            displaySnapper2()
             let newHand2 = hand2.concat(pool)
             setHand2(newHand2)
             setPool([])
@@ -271,16 +337,16 @@ const SnapContainer = () => {
                 </div>
             </div>
             <div className="snappool">
-                {gameEnded ? <EndGame score1={score1} score2={score2} selectedPlayer1={selectedPlayer1} selectedPlayer2={selectedPlayer2} winner={winner} setWinner={setWinner} setGameEnded={setGameEnded} setGameState={setGameState} replayGame={replayGame}/> : <SnapPool pool={pool} gameState={gameState}/>}
+                {gameEnded ? <EndGame score1={score1} score2={score2} selectedPlayer1={selectedPlayer1} selectedPlayer2={selectedPlayer2} winner={winner} setWinner={setWinner} setGameEnded={setGameEnded} setGameState={setGameState} replayGame={replayGame} setWinningScore={setWinningScore} winningScore={winningScore}/> : <SnapPool pool={pool} gameState={gameState} snapper1={snapper1} snapper2={snapper2}/>}
             </div>
             <div className="p2hand">
                 <div className="handcount">
                     <Player2Hand hand2={hand2}/>
                 </div>
             </div>
-            <Player1Info selectedPlayer1={selectedPlayer1} score1={score1}/>
+            <Player1Info selectedPlayer1={selectedPlayer1} score1={score1} minus={minus}/>
             <>&nbsp;</>
-            <Player2Info selectedPlayer2={selectedPlayer2} score2={score2}/>
+            <Player2Info selectedPlayer2={selectedPlayer2} score2={score2} minus2={minus2} addPoints2={addPoints2}/>
         </div>
     
         <div className="footer">
