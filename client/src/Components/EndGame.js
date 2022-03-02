@@ -4,12 +4,12 @@ import CountUp from 'react-countup';
 
 
 
-const EndGame = ({score1, score2, selectedPlayer1, selectedPlayer2, winner, setWinner, setGameEnded, setGameState, replayGame, winningScore, setWinningScore}) => {
+const EndGame = ({score1, score2, selectedPlayer1, selectedPlayer2, winner, setWinner, setGameEnded, setGameState, replayGame, winningScore, setWinningScore, hand1, hand2}) => {
 
         
         let winner1 = selectedPlayer1
         let winner2 = selectedPlayer2
-        if (score1 > score2) {
+        if (hand1.length === 52) {
         setWinner(winner1)
         setWinningScore(score1)
         }else{

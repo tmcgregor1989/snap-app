@@ -113,7 +113,7 @@ const SnapContainer = () => {
       }
     
     const displayMinusScore = () => {
-        setMinus("-500 Points!!")
+        setMinus("-500 Points")
         setTimeout(function(){
             setMinus("");
        }, 1000); 
@@ -121,7 +121,7 @@ const SnapContainer = () => {
     }
 
     const displayMinusScore2 = () => {
-        setMinus2("-500 Points!!")
+        setMinus2("-500 Points")
         setTimeout(function(){
             setMinus2("");
        }, 1000); 
@@ -129,7 +129,7 @@ const SnapContainer = () => {
     }
 
     const displayAddPoints = () => {
-        setAddPoints(`+ ${pool.length * 100} Points!!`)
+        setAddPoints(`+ ${pool.length * 100} Points`)
         setTimeout(function(){
             setAddPoints("");
        }, 1000); 
@@ -137,7 +137,7 @@ const SnapContainer = () => {
     }
 
     const displayAddPoints2 = () => {
-        setAddPoints2(`+ ${pool.length * 100} Points!!`)
+        setAddPoints2(`+ ${pool.length * 100} Points`)
         setTimeout(function(){
             setAddPoints2("");
        }, 1000); 
@@ -153,7 +153,7 @@ const SnapContainer = () => {
     }
     
     const displaySnapper2 = () => {
-        setSnapper2(`${selectedPlayer2.name} Slapped That Jack!!!!`)
+        setSnapper2(`${selectedPlayer2.name} Slapped That Jack!!!`)
         setTimeout(function(){
             setSnapper2("");
        }, 1000); 
@@ -189,7 +189,7 @@ const SnapContainer = () => {
             givePlayer2FinalScore()
             setGameEnded(true)
             setGameState(false)
-            setHand1([])
+            // setHand1([])
         }
         if ((hand2.length === 52)){
             givePlayer2FinalScore()
@@ -197,7 +197,7 @@ const SnapContainer = () => {
             givePlayer1FinalScore()
             setGameEnded(true)
             setGameState(false)
-            setHand2([])
+            // setHand2([])
         }
     }
 
@@ -217,6 +217,7 @@ const SnapContainer = () => {
     
     function handleKeyPress(e) {
         var key = e.key;
+        if (gameEnded === false){
         if (key === "a") {
             if ((hand1.length > 0) && (turn === 1)){
                 let card = hand1.pop()
@@ -297,6 +298,7 @@ const SnapContainer = () => {
             }
         }
     }
+    }
 
 
     return(
@@ -337,14 +339,14 @@ const SnapContainer = () => {
                 </div>
             </div>
             <div className="snappool">
-                {gameEnded ? <EndGame score1={score1} score2={score2} selectedPlayer1={selectedPlayer1} selectedPlayer2={selectedPlayer2} winner={winner} setWinner={setWinner} setGameEnded={setGameEnded} setGameState={setGameState} replayGame={replayGame} setWinningScore={setWinningScore} winningScore={winningScore}/> : <SnapPool pool={pool} gameState={gameState} snapper1={snapper1} snapper2={snapper2}/>}
+                {gameEnded ? <EndGame hand1={hand1} hand2={hand2} score1={score1} score2={score2} selectedPlayer1={selectedPlayer1} selectedPlayer2={selectedPlayer2} winner={winner} setWinner={setWinner} setGameEnded={setGameEnded} setGameState={setGameState} replayGame={replayGame} setWinningScore={setWinningScore} winningScore={winningScore}/> : <SnapPool pool={pool} gameState={gameState} snapper1={snapper1} snapper2={snapper2}/>}
             </div>
             <div className="p2hand">
                 <div className="handcount">
                     <Player2Hand hand2={hand2}/>
                 </div>
             </div>
-            <Player1Info selectedPlayer1={selectedPlayer1} score1={score1} minus={minus}/>
+            <Player1Info selectedPlayer1={selectedPlayer1} score1={score1} minus={minus} addPoints={addPoints}/>
             <>&nbsp;</>
             <Player2Info selectedPlayer2={selectedPlayer2} score2={score2} minus2={minus2} addPoints2={addPoints2}/>
         </div>
