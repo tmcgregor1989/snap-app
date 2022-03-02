@@ -29,7 +29,7 @@ const SnapContainer = () => {
     const [score1, setScore1] = useState(0);
     const [score2, setScore2] = useState(0);
     const [player1name, setPlayer1Name] = useState("");
-    const [player2name, setPlayer2Name] = useState("");
+    // const [player2name, setPlayer2Name] = useState("");
     const [selectedPlayer1, setSelectedPlayer1] = useState({});
     const [selectedPlayer2, setSelectedPlayer2] = useState({});
     const [turn, setTurn] = useState(1);
@@ -75,44 +75,24 @@ const SnapContainer = () => {
         setPool(newPool)
         setHand1(newHand1)
         setHand2(newHand2)
-        setGameState(true)}
+        setGameState(true)
         // let audio = new Audio("https://interactive-examples.mdn.mozilla.net/media/examples/t-rex-roar.mp3")
-        // let audio = new Audio("./sounds/shuffle2.mp3")
-        // audio.play()
+        let shuffle = new Audio("./sounds/shuffle2.mp3")
+        shuffle.play()
+        }
     }
-
-    // const playCard1 = function(){
-    // if (hand1.length > 0){
-    //     let card = hand1.pop()
-    //     let newPool = [...pool, card]
-    //     setHand1(hand1)
-    //     setPool(newPool)
-    //     }
-    // }
-
 
     const postHighScore = newHighScore => {
         dbpostHighScore(newHighScore)
           .then(savedHighScore => setHighScores([ ...highScores, savedHighScore ]))
       };
 
-    // const postHighScore2 = newHighScore => {
-    //     dbpostHighScore(newHighScore)
-    //       .then(savedHighScore => setHighScores([ ...highScores, savedHighScore ]))
-    //   };
-
-   
-      
-
     const getHighScores = function(){
         dbGetHighScores()
         .then((data) => {
-            // console.log(data);
             setHighScores(data)
         })
     }
-
-    
 
     const deleteHighScore = (id) => {
         dbDeleteHighScore(id).then(()=>{
@@ -125,7 +105,6 @@ const SnapContainer = () => {
 
     const updatePlayerScore = updatedScore => {
         updateHighScore(updatedScore);
-    
         const updatedScoreIndex = highScores.findIndex(highScore => highScore._id === updatedScore._id);
         const updatedScores = [...highScores];
         updatedScores[updatedScoreIndex] = updatedScore;
@@ -178,12 +157,7 @@ const SnapContainer = () => {
         setTimeout(function(){
             setSnapper2("");
        }, 1000); 
-
-
     }
-
-
-    
     
     //   function to be added to appropriate component in order to invoke updatePlayerScore function
     const givePlayer1FinalScore = () => {
@@ -193,10 +167,7 @@ const SnapContainer = () => {
                 name: selectedPlayer1.name,
                 score: score1
         })
-    } else {
-        console.log("Score not good enough!!!");
-    }
-        
+        }
     }
 
     const givePlayer2FinalScore = () => {
@@ -206,7 +177,6 @@ const SnapContainer = () => {
             name: selectedPlayer2.name,
             score: score2
         })
-        
     }}
 
 
@@ -347,9 +317,6 @@ const SnapContainer = () => {
                     </div>
                     </h1>
             </div>
-            {/* <div className="delete">
-                <DeletePlayer highScores={highScores} deleteHighScore={deleteHighScore} playerToDelete={playerToDelete} setPlayerToDelete={setPlayerToDelete}/>
-            </div> */}
             <div className="instructions">
                 <button onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>Instructions</button>
                 <button onMouseEnter={() => setIsShown2(true)} onMouseLeave={() => setIsShown2(false)}>Controls</button>
