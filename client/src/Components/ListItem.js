@@ -1,5 +1,4 @@
 import React from 'react';
-import { GiSkullCrossedBones } from 'react-icons/gi';
 
 const ListItem = ({highScore, deleteHighScore, index}) => {
 
@@ -12,6 +11,3 @@ const ListItem = ({highScore, deleteHighScore, index}) => {
 }
 // 🗑
 export default ListItem;
-
-
-{/* <button onClick={()=>deleteHighScore(highScore._id)}><GiSkullCrossedBones/></button> */}
