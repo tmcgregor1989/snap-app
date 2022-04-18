@@ -12,6 +12,27 @@
 
 ![Snap app game over image](images/Snapp-app%20Game%20over%20screen.png)
 
+#Fancy a game?
+
+Just clone the repo and follow these commands
+
+open two terminals and cd client and cd server respectively.
+
+In server:
+
+npm install
+
+npm run seeds
+
+npm run server:dev
+
+In client:
+
+npm install
+
+npm start
+
+Navigate to localhost:3000 and get snapping!!
 
 
 
