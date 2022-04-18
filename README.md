@@ -1,6 +1,16 @@
-# Images
+# Screenshots
+
+## Player selection!
 
 ![Snap app pre-game image](images/Snap-app%20player%20selected%20screen.png)
+
+## Game on!!
+
+![Snap app gameplay image](images/snap-app%20gameplay%20screen.png)
+
+## Game Over!!
+
+![Snap app game over image](images/Snapp-app%20Game%20over%20screen.png)
 
 
 
