@@ -1,3 +1,10 @@
+# Images
+
+![Snap app pre-game image](images/Snap-app%20player%20selected%20screen.png)
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
